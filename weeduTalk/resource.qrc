@@ -1,0 +1,64 @@
+<RCC>
+    <qresource prefix="/images"/>
+    <qresource prefix="/">
+        <file>images/logo.png</file>
+        <file>images/widget_clos_1.png</file>
+        <file>images/widget_clos_2.png</file>
+        <file>images/btn_login.png</file>
+        <file>images/btn_unLogin.png</file>
+        <file>images/btn_offControl.png</file>
+        <file>images/btn_openControl.png</file>
+        <file>images/mainLogo.png</file>
+        <file>images/widgetTopBg.png</file>
+        <file>images/headBg.png</file>
+        <file>images/btn_selectedBg.png</file>
+        <file>images/primary_bg.png</file>
+        <file>images/defaultCourse.png</file>
+        <file>images/btn_ data.png</file>
+        <file>images/btn_ information.png</file>
+        <file>images/btn_ personage.png</file>
+        <file>images/btn_ study.png</file>
+        <file>images/middle_head.png</file>
+        <file>images/middle_bg.png</file>
+        <file>images/middle_btn_back.png</file>
+        <file>images/middle_lbtnOff.png</file>
+        <file>images/middle_lbtnOpen.png</file>
+        <file>images/middle_level1.png</file>
+        <file>images/middle_level2.png</file>
+        <file>images/middle_level3.png</file>
+        <file>images/middle_level4.png</file>
+        <file>images/middle_level5.png</file>
+        <file>images/middle_level6.png</file>
+        <file>images/middle_level7.png</file>
+        <file>images/middle_level8.png</file>
+        <file>images/middle_levelClose.png</file>
+        <file>images/middle_StarOff.png</file>
+        <file>images/middle_StarOn.png</file>
+        <file>images/middle_unit.png</file>
+        <file>images/primary_btn_back.png</file>
+        <file>images/primary_btnOff.png</file>
+        <file>images/primary_btnOpen.png</file>
+        <file>images/primary_lessonbg.png</file>
+        <file>images/primary_level.png</file>
+        <file>images/primary_level1.png</file>
+        <file>images/primary_level2.png</file>
+        <file>images/primary_level3.png</file>
+        <file>images/primary_level4.png</file>
+        <file>images/primary_level5.png</file>
+        <file>images/primary_level6.png</file>
+        <file>images/primary_level7.png</file>
+        <file>images/primary_level8.png</file>
+        <file>images/primary_starOff.png</file>
+        <file>images/primary_starOn.png</file>
+        <file>images/primary_unit1.png</file>
+        <file>images/primary_unit2.png</file>
+        <file>images/primary_unit3.png</file>
+        <file>images/primary_unit4.png</file>
+        <file>images/primary_unit5.png</file>
+        <file>images/primary_unit6.png</file>
+        <file>images/primary_unit7.png</file>
+        <file>images/primary_unit8.png</file>
+        <file>images/primary_unitClose.png</file>
+        <file>images/high_bg.png</file>
+    </qresource>
+</RCC>
