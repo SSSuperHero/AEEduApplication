@@ -60,5 +60,8 @@
         <file>images/primary_unit8.png</file>
         <file>images/primary_unitClose.png</file>
         <file>images/high_bg.png</file>
+        <file>images/home_close.png</file>
+        <file>images/home_max.png</file>
+        <file>images/home_min.png</file>
     </qresource>
 </RCC>

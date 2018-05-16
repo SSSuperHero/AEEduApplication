@@ -48,6 +48,12 @@ private slots:
 
     void slot_onGetWetalkgetUnitListSuccess(const QString &response);
     void slot_onGetWetalkgetUnitListFailure(const QString &response);
+    void on_minButton_clicked();
+
+    void on_maxButton_clicked();
+
+    void on_close_button_clicked();
+
 private:
     Ui::WeeduMainWidget         *ui;
 

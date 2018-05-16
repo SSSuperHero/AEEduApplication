@@ -52,10 +52,16 @@
       </property>
       <item>
        <widget class="QWidget" name="widgetTop" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>130</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>120</height>
+          <height>130</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -84,7 +90,7 @@ border-image: url(:/images/widgetTopBg.png);
          <property name="geometry">
           <rect>
            <x>820</x>
-           <y>20</y>
+           <y>30</y>
            <width>128</width>
            <height>80</height>
           </rect>
@@ -196,7 +202,7 @@ border-image: url(:/images/headBg.png);
             <x>240</x>
             <y>0</y>
             <width>72</width>
-            <height>120</height>
+            <height>121</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -206,6 +212,76 @@ border-image: url(:/images/headBg.png);
            <string/>
           </property>
          </widget>
+        </widget>
+        <widget class="QPushButton" name="minButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>850</x>
+           <y>10</y>
+           <width>14</width>
+           <height>14</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/images/home_min.png</normaloff>
+           <normalon>:/images/home_min.png</normalon>:/images/home_min.png</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="maxButton">
+         <property name="geometry">
+          <rect>
+           <x>890</x>
+           <y>10</y>
+           <width>14</width>
+           <height>14</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/images/home_max.png</normaloff>:/images/home_max.png</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="close_button">
+         <property name="geometry">
+          <rect>
+           <x>930</x>
+           <y>10</y>
+           <width>14</width>
+           <height>14</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/images/home_close.png</normaloff>:/images/home_close.png</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
         </widget>
        </widget>
       </item>
@@ -278,6 +354,9 @@ QListWidget::item:selected:!active
 }
 */</string>
            </property>
+           <property name="showDropIndicator" stdset="0">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
@@ -295,6 +374,8 @@ QListWidget::item:selected:!active
    <header>utility/widget/clicklabel.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

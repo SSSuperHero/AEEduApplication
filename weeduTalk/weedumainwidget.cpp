@@ -49,13 +49,12 @@ void WeeduMainWidget::loadWetalkCourseInfoList()
 
 void WeeduMainWidget::slot_onGetWetalkgetCourseInfoStart()
 {
-
-
+    qDebug()<<"start loading";
 }
 
 void WeeduMainWidget::slot_onGetWetalkgetCourseInfoFinish()
 {
-
+    qDebug()<<"end loading";
 }
 
 void WeeduMainWidget::slot_onGetWetalkgetCourseInfoSuccess(const QString &response)
@@ -188,4 +187,19 @@ WeeduMainWidget::~WeeduMainWidget()
     }
 
     delete ui;
+}
+
+void WeeduMainWidget::on_minButton_clicked()
+{
+    this->showMinimized();
+}
+
+void WeeduMainWidget::on_maxButton_clicked()
+{
+    this->showFullScreen();
+}
+
+void WeeduMainWidget::on_close_button_clicked()
+{
+    this->close();
 }
