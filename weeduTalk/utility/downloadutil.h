@@ -18,6 +18,7 @@ public:
     static QString getDownloadedImageFilePath(const QString& url);
     static NetWorkDownloadReplyHolder *downloadInstaller(QObject *owner, const QString &url);
     static NetWorkDownloadReplyHolder *downloadSound(QObject *owner, const QString &url, const QString &_fileName);
+    static NetWorkDownloadReplyHolder *downloadZipFile(QObject *owner, const QString &url);
 };
 
 #endif // DOWNLOADUTIL_H

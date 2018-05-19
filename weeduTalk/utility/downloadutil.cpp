@@ -47,6 +47,12 @@ NetWorkDownloadReplyHolder *DownloadUtil::downloadInstaller(QObject *owner, cons
     return HttpMgr::instance()->download(owner, url, PathUtil::getInstallerDirPath());
 }
 
+NetWorkDownloadReplyHolder *DownloadUtil::downloadZipFile(QObject *owner, const QString &url)
+{
+    qInfo("downloadInstaller url:%s", qUtf8Printable(url));
+    return HttpMgr::instance()->download(owner, url, PathUtil::getCourseDirPath());
+}
+
 NetWorkDownloadReplyHolder *DownloadUtil::downloadSound( QObject *owner, const QString &url,
                                                         const QString &_fileName )
 {

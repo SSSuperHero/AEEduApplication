@@ -169,6 +169,9 @@ void WeeduMainWidget::slot_onGetWetalkgetUnitListSuccess(const QString &response
     fromJson( response, _wetalkgetUnitInfo );
 
     qDebug()<<"slot_onGetWetalkgetUnitListSuccess size:"<<_wetalkgetUnitInfo.data.size();
+    if( _wetalkgetUnitInfo.data.size() < 1 )
+        return;
+
     m_weeduSchoolUnitWidget->upSchoolUnitWidget( _wetalkgetUnitInfo.data, m_schoolUnitType );
     m_weeduSchoolUnitWidget->show();
     this->hide();

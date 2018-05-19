@@ -33,6 +33,7 @@ public:
     static QString getLanguagesXmlFilePath();
     static QString getBellDirPath();
     static QString getBellFileName( const QString _fileName );
+    static QString getCourseDirPath();
 };
 
 #endif // PATHUTIL_H

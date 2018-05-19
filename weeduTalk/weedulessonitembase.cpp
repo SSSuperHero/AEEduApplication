@@ -1,6 +1,7 @@
 #include "weedulessonitembase.h"
 #include "weedulessonitem.h"
 #include "weeduhighschoollesson.h"
+#include "utility/widget/downlodewidget.h"
 
 LESSON_WEEDUSCHOOL_TYPE WeeduLessonItemBase::m_weeduSchoolType = HIGHSCHOOL_LESSON_ITEM;
 
@@ -39,12 +40,14 @@ WeeduLessonItemBase *WeeduLessonItemBase::newSchoolLessonItem(QWidget *owner, co
 
 void WeeduLessonItemBase::mouseReleaseEvent(QMouseEvent *event)
 {
-    emit signal_clickSchoolLessonItem( m_weeduSchoolId, m_weeduSchoolType );
+    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo.id, m_weeduSchoolType );
+
+    downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
 
     QWidget::mouseReleaseEvent( event );
 }
 
-void WeeduLessonItemBase::setWeeduSchooLessonlId(const int _id)
+void WeeduLessonItemBase::setWeeduSchooLessonlId(const wetalkgetLessonInfo _lessonInfo)
 {
-    m_weeduSchoolId = _id;
+    m_wetalkgetLessonInfo = _lessonInfo;
 }

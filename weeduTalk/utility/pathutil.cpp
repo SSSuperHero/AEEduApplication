@@ -20,6 +20,8 @@ QString PathUtil::getApplicationDirPath()
 
 QString PathUtil::getAppDataLocation()
 {
+    return getApplicationDirPath();
+
     QStringList appLocations = QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
     if (appLocations.isEmpty())
     {
@@ -46,6 +48,15 @@ QString PathUtil::getPdfDirPath()
 QString PathUtil::getInstallerDirPath()
 {
     QString path = joinPath(getAppDataLocation(), "download/installer");
+
+    mkdir(path);
+
+    return path;
+}
+
+QString PathUtil::getCourseDirPath()
+{
+    QString path = joinPath(getAppDataLocation(), "download/course");
 
     mkdir(path);
 

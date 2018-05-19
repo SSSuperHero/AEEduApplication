@@ -23,6 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+macx: LIBS += -L$$PWD/zlib/lib/ -lz
+
+INCLUDEPATH += $$PWD/zlib/include
+DEPENDPATH += $$PWD/zlib/include
+
+macx: PRE_TARGETDEPS += $$PWD/zlib/lib/libz.a
 
 SOURCES += \
         main.cpp \
@@ -62,7 +68,11 @@ SOURCES += \
     utility/widget/windgetlabel.cpp \
     weeduhighschoollesson.cpp \
     weedulessonitembase.cpp \
-    utility/widget/clicklabel.cpp
+    utility/widget/clicklabel.cpp \
+    zlib/ioapi.c \
+    zlib/unzip.c \
+    zlib/zlibutility.cpp \
+    utility/widget/downlodewidget.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -109,7 +119,11 @@ HEADERS += \
     utility/widget/windgetlabel.h \
     weeduhighschoollesson.h \
     weedulessonitembase.h \
-    utility/widget/clicklabel.h
+    utility/widget/clicklabel.h \
+    zlib/ioapi.h \
+    zlib/unzip.h \
+    zlib/zlibutility.h \
+    utility/widget/downlodewidget.h
 
 FORMS += \
     weeduloginwidget.ui \
@@ -121,7 +135,8 @@ FORMS += \
     weeduprimaryschoolunititem.ui \
     weedulessonitem.ui \
     weeduchooselevelwidget.ui \
-    weeduhighschoollesson.ui
+    weeduhighschoollesson.ui \
+    utility/widget/downlodewidget.ui
 
 RESOURCES += \
     resource.qrc

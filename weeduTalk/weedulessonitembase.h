@@ -67,7 +67,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
 public:
-    void setWeeduSchooLessonlId(const int _id);
+    void setWeeduSchooLessonlId(const wetalkgetLessonInfo _lessonInfo);
 signals:
     void signal_clickSchoolLessonItem( const int _id, const LESSON_WEEDUSCHOOL_TYPE _type );
 
@@ -76,5 +76,7 @@ public slots:
 private:
     int                                 m_weeduSchoolId;
     static LESSON_WEEDUSCHOOL_TYPE      m_weeduSchoolType;
+
+    wetalkgetLessonInfo                 m_wetalkgetLessonInfo;
 };
 #endif // WEEDULESSONITEMBASE_H

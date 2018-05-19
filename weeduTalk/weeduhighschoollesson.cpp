@@ -25,6 +25,6 @@ void WeeduHighSchoolLesson::bind(const wetalkgetLessonInfo _wetalkgetLessonInfo)
     ui->label_Num->setText( QString::number( _wetalkgetLessonInfo.accuracy ) + "%" );
 //    ui->label_type->setText( _wetalkgetLessonInfo.description );
 
-    setWeeduSchooLessonlId( _wetalkgetLessonInfo.id );
+    setWeeduSchooLessonlId( _wetalkgetLessonInfo );
 }
 

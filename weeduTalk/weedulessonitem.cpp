@@ -19,7 +19,7 @@ void WeeduLessonItem::bind(const wetalkgetLessonInfo _wetalkgetLessonInfo)
     ui->label_accuracy->setText( QString::number( _wetalkgetLessonInfo.accuracy ) + "%" );
     ui->label_completion->setText( QString::number( _wetalkgetLessonInfo.completion_rate ) + "%" );
 
-    setWeeduSchooLessonlId( _wetalkgetLessonInfo.id );
+    setWeeduSchooLessonlId( _wetalkgetLessonInfo );
 }
 
 WeeduLessonItem::~WeeduLessonItem()
