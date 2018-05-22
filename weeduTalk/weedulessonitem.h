@@ -22,6 +22,7 @@ public:
 
 private:
     Ui::WeeduLessonItem *ui;
+
 };
 
 #endif // WEEDULESSONITEM_H

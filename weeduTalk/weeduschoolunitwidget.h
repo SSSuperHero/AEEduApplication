@@ -7,6 +7,7 @@
 #include "weeduchooselevelwidget.h"
 #include "mgr/http/echowebhttpapi.h"
 #include "weedulessonitembase.h"
+#include "weedulessonguidewidget.h"
 
 namespace Ui {
 class WeeduSchoolUnitWidget;
@@ -53,6 +54,7 @@ private:
 
     QWidget                     *m_layoutWidgetbase;
     WeeduChooseLevelWidget      *m_chooseLevelItemWidget;
+    WeEduLessonGuideWidget      *m_lessonGuideWidget;
     EntityNetworkReplyHolder    *m_getWetalkgetLessonListReply;
 
     UNIT_WEEDUSCHOOL_TYPE       m_weeduSchoolUnitType;

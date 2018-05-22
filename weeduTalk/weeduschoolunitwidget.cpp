@@ -21,6 +21,8 @@ WeeduSchoolUnitWidget::WeeduSchoolUnitWidget(QWidget *parent) :
              this, &WeeduSchoolUnitWidget::slot_hideChooseLevelItemWidget );
     connect( ui->widgetChoose, &windgetLabel::signal_clickWidgetItem,
              this, &WeeduSchoolUnitWidget::slot_showChooseLevelItemWidget );
+    m_lessonGuideWidget = new WeEduLessonGuideWidget();
+    m_lessonGuideWidget->hide();
 
     ui->label_head->setPixmap( QPixmap( userInfoMgr::instance()->getUserInfo().avatar_url ) );
 }
@@ -276,5 +278,7 @@ void WeeduSchoolUnitWidget::slot_clickSchoolUnitItem(const int _id, const UNIT_W
 
 void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type )
 {
-
+    m_lessonGuideWidget->setGeometry(this->geometry());
+    m_lessonGuideWidget->show();
+    m_lessonGuideWidget->setLessonInfoAndType(_lessonInfo,_type);
 }

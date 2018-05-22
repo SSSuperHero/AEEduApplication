@@ -72,7 +72,8 @@ SOURCES += \
     zlib/ioapi.c \
     zlib/unzip.c \
     zlib/zlibutility.cpp \
-    utility/widget/downlodewidget.cpp
+    utility/widget/downlodewidget.cpp \
+    weedulessonguidewidget.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -123,7 +124,8 @@ HEADERS += \
     zlib/ioapi.h \
     zlib/unzip.h \
     zlib/zlibutility.h \
-    utility/widget/downlodewidget.h
+    utility/widget/downlodewidget.h \
+    weedulessonguidewidget.h
 
 FORMS += \
     weeduloginwidget.ui \
@@ -136,7 +138,8 @@ FORMS += \
     weedulessonitem.ui \
     weeduchooselevelwidget.ui \
     weeduhighschoollesson.ui \
-    utility/widget/downlodewidget.ui
+    utility/widget/downlodewidget.ui \
+    weedulessonguidewidget.ui
 
 RESOURCES += \
     resource.qrc
