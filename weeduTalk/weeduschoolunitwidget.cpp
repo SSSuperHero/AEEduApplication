@@ -274,7 +274,7 @@ void WeeduSchoolUnitWidget::slot_clickSchoolUnitItem(const int _id, const UNIT_W
     }
 }
 
-void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem(const int _id, const LESSON_WEEDUSCHOOL_TYPE _type)
+void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type )
 {
 
 }

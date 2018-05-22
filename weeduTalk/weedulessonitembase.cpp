@@ -40,9 +40,9 @@ WeeduLessonItemBase *WeeduLessonItemBase::newSchoolLessonItem(QWidget *owner, co
 
 void WeeduLessonItemBase::mouseReleaseEvent(QMouseEvent *event)
 {
-    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo.id, m_weeduSchoolType );
-
     downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
+
+    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType );
 
     QWidget::mouseReleaseEvent( event );
 }
