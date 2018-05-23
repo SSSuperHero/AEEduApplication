@@ -17,10 +17,19 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string/>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgba(0, 0, 0, 76);</string>
+   <string notr="true">QWidget#WeEduLessonGuideWidget
+{
+background-color: rgba(255, 255, 255, 0);
+}</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
@@ -70,12 +79,15 @@
            </size>
           </property>
           <property name="text">
-           <string>lessonImage</string>
+           <string/>
           </property>
          </widget>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>30</number>
+          </property>
           <item>
            <widget class="QPushButton" name="listenButton">
             <property name="font">
@@ -87,6 +99,12 @@
             </property>
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+text-align : left;
+background-color: rgb(255, 255, 255);
+}</string>
             </property>
             <property name="text">
              <string>1.Listening</string>
@@ -103,6 +121,12 @@
               <pointsize>16</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+text-align : left;
+background-color: rgb(255, 255, 255);
+}</string>
+            </property>
             <property name="text">
              <string>2.Reading</string>
             </property>
@@ -117,6 +141,12 @@
              <font>
               <pointsize>16</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+text-align : left;
+background-color: rgb(255, 255, 255);
+}</string>
             </property>
             <property name="text">
              <string>3.Quiz</string>
