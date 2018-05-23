@@ -20,6 +20,15 @@ NetworkImageReplyHolder *DownloadUtil::downloadImage(QObject *owner, const QStri
 {
      qInfo("NetworkImageReplyHolder downloadImage url:%s", qUtf8Printable(url));
 
+     QString filePath = PathUtil::getImageDirPath() + "/"+ NetWorkDownloadReplyHolder::generateFileName(url);
+     if (QFile::exists(filePath))
+     {
+         qInfo("download file path:%s",qUtf8Printable(filePath));
+
+         ImageUtil::setBackgroundImage(label, styleSheetSectionName, filePath, bBackgroundImage);
+         return NULL;
+     }
+
      if (!url.toLower().startsWith("http"))
      {
          qInfo("it's a local file");

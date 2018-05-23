@@ -74,7 +74,7 @@ EntityNetworkReplyHolder *EchoWebHttpApi::getWetalkUnitList(QObject* replyOwner 
 
 EntityNetworkReplyHolder *EchoWebHttpApi::getWetalkUnitItem( QObject* replyOwner, const int unit_id )
 {
-    QString postUrl = getUrl( QString("components/lessons/wetalkgetLessonList/%1/").arg(QString::number(unit_id)));
+    QString postUrl = getUrl( QString("components/lessons/wetalkgetLessonList/%1/").arg(QString::number(unit_id)) );
     HttpParamMap_t params;
     params.insert( "access_token", userInfoMgr::instance()->getToken() );
 

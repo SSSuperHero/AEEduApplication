@@ -40,7 +40,8 @@ WeeduLessonItemBase *WeeduLessonItemBase::newSchoolLessonItem(QWidget *owner, co
 
 void WeeduLessonItemBase::mouseReleaseEvent(QMouseEvent *event)
 {
-    downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
+    if ( m_weeduSchoolType > HIGHSCHOOL_LESSON_ITEM )
+        downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
 
     emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType );
 

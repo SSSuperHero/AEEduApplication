@@ -1,5 +1,5 @@
 ﻿#include "imageutil.h"
-
+#include <QDebug>
 #include <QFile>
 #include <utility/widget/stylesheetutil.h>
 
@@ -17,6 +17,8 @@ bool ImageUtil::setBackgroundImage(QWidget* label, const QString& styleSheetSect
         qCritical("label is null");
         return false;
     }
+
+    qDebug()<<"setBackgroundImage label:"<<label->width()<<label->height();
 
     if (styleSheetSectionName.isEmpty())
     {
@@ -72,6 +74,7 @@ bool ImageUtil::setBackgroundImage(QWidget* label, const QString& styleSheetSect
     {
         styleUtil.changeStyle(label, styleSheetSectionName, QString("background-image: url(%1);").arg(filePath));
     } else {
+        filePath = imageFilePath;
         styleUtil.changeStyle(label, styleSheetSectionName, QString("border-image: url(%1);").arg(filePath));
     }
 
