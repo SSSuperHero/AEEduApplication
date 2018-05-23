@@ -104,7 +104,12 @@ background-color: rgba(255, 255, 255, 0);
              <string notr="true">QPushButton{
 text-align : left;
 background-color: rgb(255, 255, 255);
-}</string>
+}
+QPushButton:pressed{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
             </property>
             <property name="text">
              <string>1.Listening</string>
