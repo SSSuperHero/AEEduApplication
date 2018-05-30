@@ -19,6 +19,9 @@ WeeduSchoolUnitWidget::WeeduSchoolUnitWidget(QWidget *parent) :
     m_chooseLevelItemWidget->hide();
     connect( m_chooseLevelItemWidget, &WeeduChooseLevelWidget::signal_chooseLevelWidgetHide,
              this, &WeeduSchoolUnitWidget::slot_hideChooseLevelItemWidget );
+    connect( m_chooseLevelItemWidget, &WeeduChooseLevelWidget::signal_clickWeeduChooseLevelItem,
+             this, &WeeduSchoolUnitWidget::signal_clickWeeduChooseLevelItem );
+
     connect( ui->widgetChoose, &windgetLabel::signal_clickWidgetItem,
              this, &WeeduSchoolUnitWidget::slot_showChooseLevelItemWidget );
     m_lessonGuideWidget = new WeEduLessonGuideWidget();
@@ -27,25 +30,9 @@ WeeduSchoolUnitWidget::WeeduSchoolUnitWidget(QWidget *parent) :
     ui->label_head->setPixmap( QPixmap( userInfoMgr::instance()->getUserInfo().avatar_url ) );
 }
 
-void WeeduSchoolUnitWidget::clearLayout(QLayout *layout)
+void WeeduSchoolUnitWidget::upWeeduChooseLevelInfoList( const wetalkgetLevelInfo_t _levelInfoList )
 {
-    QLayoutItem *item;
-    while((item = layout->takeAt(0)) != 0)
-    {
-        //删除widget
-        if(item->widget())
-        {
-            delete item->widget();
-            //item->widget()->deleteLater();
-        }
-        //删除子布局
-        QLayout *childLayout = item->layout();
-        if(childLayout)
-        {
-            clearLayout(childLayout);
-        }
-        delete item;
-    }
+    m_chooseLevelItemWidget->bindWeeduChooseLevelInfoList( _levelInfoList );
 }
 
 void WeeduSchoolUnitWidget::updateBackgroundPic( const UNIT_WEEDUSCHOOL_TYPE _unitType )

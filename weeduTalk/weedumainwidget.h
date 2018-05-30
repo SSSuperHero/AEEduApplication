@@ -33,6 +33,8 @@ private:
 public slots:
     void slot_loginSuccess();
 
+    void slot_clickWeeduChooseLevelItem( const int _leaveId );
+
 private slots:
     void slot_onGetWetalkgetCourseInfoStart();
     void slot_onGetWetalkgetCourseInfoFinish();
@@ -57,7 +59,7 @@ private:
 
     WeeduSchoolUnitWidget       *m_weeduSchoolUnitWidget;
 
-    UNIT_WEEDUSCHOOL_TYPE            m_schoolUnitType;
+    UNIT_WEEDUSCHOOL_TYPE       m_schoolUnitType;
     int                         m_currentCourseId;
 
 };

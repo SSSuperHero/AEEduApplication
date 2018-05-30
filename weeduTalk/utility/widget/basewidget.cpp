@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSize>
 #include <QApplication>
+#include <QLayout>
 
 BaseWidget::BaseWidget(QWidget *parent) : QFrame(parent)
 {
@@ -170,6 +171,28 @@ void BaseWidget::widgetShowCenter()
     move( (m_rect.width() - width())/2,
           (m_rect.height() - height())/2);
 }
+
+void BaseWidget::clearLayout(QLayout *layout)
+{
+    QLayoutItem *item;
+    while((item = layout->takeAt(0)) != 0)
+    {
+        //删除widget
+        if(item->widget())
+        {
+            delete item->widget();
+            //item->widget()->deleteLater();
+        }
+        //删除子布局
+        QLayout *childLayout = item->layout();
+        if(childLayout)
+        {
+            clearLayout(childLayout);
+        }
+        delete item;
+    }
+}
+
 
 void BaseWidget::enterEvent(QEvent *event)
 {

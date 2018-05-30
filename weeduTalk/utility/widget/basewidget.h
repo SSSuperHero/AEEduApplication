@@ -21,6 +21,7 @@ public:
     void reSetFont(QFont _font, QWidget *_widget);
     void reSetCloseIcon(QWidget *_widget);
     double getZoomFactorNum();
+    void clearLayout(QLayout *layout);
 protected:
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);

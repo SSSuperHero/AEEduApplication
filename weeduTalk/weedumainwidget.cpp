@@ -20,6 +20,9 @@ void WeeduMainWidget::init()
     m_weeduSchoolUnitWidget = new WeeduSchoolUnitWidget();
     connect( m_weeduSchoolUnitWidget, &WeeduSchoolUnitWidget::signal_clickeBack,
              this, &WeeduMainWidget::slot_clickeBack );
+    connect( m_weeduSchoolUnitWidget, &WeeduSchoolUnitWidget::signal_clickWeeduChooseLevelItem,
+             this, &WeeduMainWidget::slot_clickWeeduChooseLevelItem );
+
     m_weeduSchoolUnitWidget->hide();
 
     connect( ui->listWidget, &QListWidget::itemClicked, this, &WeeduMainWidget::slot_itemClicked );
@@ -30,6 +33,11 @@ void WeeduMainWidget::slot_loginSuccess()
     loadWetalkCourseInfoList();
 
     ui->label_head->setPixmap( QPixmap(userInfoMgr::instance()->getUserInfo().avatar_url) );
+}
+
+void WeeduMainWidget::slot_clickWeeduChooseLevelItem(const int _leaveId)
+{
+    loadWetalkgetUnitList( m_currentCourseId, _leaveId );
 }
 
 void WeeduMainWidget::loadWetalkCourseInfoList()
@@ -99,6 +107,10 @@ void WeeduMainWidget::slot_onGetWetalkgetLevelListSuccess(const QString &respons
     HttpEntity<wetalkgetLevelInfo_t> _wetalkgetLevelInfo;
     fromJson( response, _wetalkgetLevelInfo );
 
+    if( _wetalkgetLevelInfo.data.size() < 1 )
+        return;
+
+    m_weeduSchoolUnitWidget->upWeeduChooseLevelInfoList( _wetalkgetLevelInfo.data );
     loadWetalkgetUnitList( m_currentCourseId, _wetalkgetLevelInfo.data.at(0).id );
 }
 

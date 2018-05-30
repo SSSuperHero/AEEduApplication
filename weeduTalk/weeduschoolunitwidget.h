@@ -29,14 +29,15 @@ public:
 
     void upSchoolUnitWidget(const wetalkgetUnitInfo_t &_wetalkgetUnitInfoList, const UNIT_WEEDUSCHOOL_TYPE _unitType);
     void upSchoolLessonWidget(const wetalkgetLessonInfo_t &_wetalkgetLessonInfoList, const LESSON_WEEDUSCHOOL_TYPE _lessonType);
+    void upWeeduChooseLevelInfoList(const wetalkgetLevelInfo_t _levelInfoList);
 private:
-    void clearLayout(QLayout *layout);
     void updateBackgroundPic(const UNIT_WEEDUSCHOOL_TYPE _unitType);
     int getCurrentRowNum(const int _unitType);
     void loadWetalkgetLessonList(const int _unit_id);
 
 signals:
     void signal_clickeBack();
+    void signal_clickWeeduChooseLevelItem( const int _leaveId );
 
 private slots:
     void on_pushButton_clicked();
