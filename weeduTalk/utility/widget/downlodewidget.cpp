@@ -1,6 +1,7 @@
 #include "downlodewidget.h"
 #include "ui_downlodewidget.h"
 #include "zlib/zlibutility.h"
+#include "utility/widget/promptmessagewidget.h"
 
 downlodeWidget::downlodeWidget(QWidget *parent) :
     QWidget(parent),
@@ -55,10 +56,13 @@ void downlodeWidget::slot_onSuccess_download(const QString &filePath)
     ZlibUtility::uncompressedFile( filePath, _fileList );
 
     this->hide();
+
+    emit signal_downloadZipFileSuccess();
 }
 
 void downlodeWidget::slot_onFailure_download(int errorCode)
 {
+//    promptMessageWidget::ShowMsg( "资源下载失败，请重试...", this, 3 );
     this->hide();
 }
 

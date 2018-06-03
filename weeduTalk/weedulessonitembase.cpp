@@ -7,7 +7,8 @@ LESSON_WEEDUSCHOOL_TYPE WeeduLessonItemBase::m_weeduSchoolType = HIGHSCHOOL_LESS
 
 WeeduLessonItemBase::WeeduLessonItemBase(QWidget *parent) : QWidget(parent)
 {
-
+    connect( downlodeWidget::instance(), &downlodeWidget::signal_downloadZipFileSuccess,
+             this, &WeeduLessonItemBase::slot_downloadZipFileSuccess );
 }
 
 void WeeduLessonItemBase::bind(const wetalkgetLessonInfo _wetalkgetLessonInfo)
@@ -41,11 +42,16 @@ WeeduLessonItemBase *WeeduLessonItemBase::newSchoolLessonItem(QWidget *owner, co
 void WeeduLessonItemBase::mouseReleaseEvent(QMouseEvent *event)
 {
     if ( m_weeduSchoolType > HIGHSCHOOL_LESSON_ITEM )
+    {
         downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
-
-    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType );
+    }
 
     QWidget::mouseReleaseEvent( event );
+}
+
+void WeeduLessonItemBase::slot_downloadZipFileSuccess()
+{
+    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType );
 }
 
 void WeeduLessonItemBase::setWeeduSchooLessonlId(const wetalkgetLessonInfo _lessonInfo)

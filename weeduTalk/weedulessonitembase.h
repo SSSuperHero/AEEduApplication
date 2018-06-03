@@ -73,6 +73,7 @@ signals:
 
 public slots:
 
+    void slot_downloadZipFileSuccess();
 private:
     int                                 m_weeduSchoolId;
     static LESSON_WEEDUSCHOOL_TYPE      m_weeduSchoolType;

@@ -3,6 +3,7 @@
 #include "zlib/unzip.h"
 #include "zconf.h"
 #include <QDir>
+#include <QDebug>
 
 #define FILE_ATTRIBUTE_DIRECTORY            0x00000010
 #define FILE_ATTRIBUTE_ARCHIVE              0x00000020
@@ -28,6 +29,7 @@ void ZlibUtility::uncompressedFile( QString FileName ,QStringList & ListPic )
     if ( unzGetGlobalInfo64( zFile, &gi ) == UNZ_OK )
     {
         int result;
+
         for ( int i = 0; i < gi.number_entry; ++i )
         {
             char file[256]  = { 0 };
@@ -35,13 +37,29 @@ void ZlibUtility::uncompressedFile( QString FileName ,QStringList & ListPic )
             char com[1024]  = { 0 };
             if ( unzGetCurrentFileInfo64( zFile, &FileInfo, file, sizeof(file), ext, 256, com, 1024 ) != UNZ_OK )
             {
-                ;
+                return;
             }
+
+            QString _fileDir = file;
+            QString _mkDirPath = "";
+            while (_fileDir.indexOf("/") > -1)
+            {
+                QString _dirPath = _fileDir.left(_fileDir.indexOf("/"));
+
+                _mkDirPath += _dirPath;
+                QDir _secdir;
+                _secdir.mkpath( UnpressPath + "/" + _mkDirPath );
+
+                _fileDir = _fileDir.mid(_fileDir.indexOf("/") + 1 );
+                qDebug()<<"uncompressedFile _fileDir:"<<_fileDir;
+            }
+
             if( !( FileInfo.external_fa & FILE_ATTRIBUTE_DIRECTORY ) ) //文件，否则为目录
             {
                 result=unzOpenCurrentFile(zFile);//无密码
                 result=unzOpenCurrentFilePassword(zFile,"szPassword");//有密码
             }
+
             char data[1024] = { 0 };
             int size;
             /**将路径写到list中*/

@@ -34,6 +34,7 @@ private:
     void updateBackgroundPic(const UNIT_WEEDUSCHOOL_TYPE _unitType);
     int getCurrentRowNum(const int _unitType);
     void loadWetalkgetLessonList(const int _unit_id);
+    void upLoadWetalkPart(const int _Part_id);
 
 signals:
     void signal_clickeBack();
@@ -47,6 +48,9 @@ private slots:
     void slot_onGetWetalkgetLessonListSuccess(const QString &response);
     void slot_onGetWetalkgetLessonListFailure(const QString &response);
 
+    void slot_onGetWetalkgetPartListSuccess(const QString &response);
+    void slot_onGetWetalkgetPartListFailure(const QString &response);
+
     void slot_clickSchoolUnitItem( const int _id, const UNIT_WEEDUSCHOOL_TYPE _type );
     void slot_clickSchoolLessonItem(const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type );
 
@@ -57,6 +61,7 @@ private:
     WeeduChooseLevelWidget      *m_chooseLevelItemWidget;
     WeEduLessonGuideWidget      *m_lessonGuideWidget;
     EntityNetworkReplyHolder    *m_getWetalkgetLessonListReply;
+    EntityNetworkReplyHolder    *m_getWetalkgetPartListReply;
 
     UNIT_WEEDUSCHOOL_TYPE       m_weeduSchoolUnitType;
     LESSON_WEEDUSCHOOL_TYPE     m_weeduSchoolLessonType;
@@ -64,6 +69,7 @@ private:
 
     wetalkgetUnitInfo_t         m_weeduChooseUnitInfoList;
     wetalkgetLessonInfo_t       m_weeduChooseLessonInfoList;
+
 };
 
 #endif // WEEDUSCHOOLUNITWIDGET_H

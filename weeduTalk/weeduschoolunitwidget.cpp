@@ -266,7 +266,29 @@ void WeeduSchoolUnitWidget::slot_clickSchoolUnitItem(const int _id, const UNIT_W
 void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type )
 {
 
-    m_lessonGuideWidget->setGeometry(this->geometry());
-    m_lessonGuideWidget->show();
-    m_lessonGuideWidget->setLessonInfoAndType(_lessonInfo,_type);
+//    m_lessonGuideWidget->setGeometry(this->geometry());
+//    m_lessonGuideWidget->show();
+//    m_lessonGuideWidget->setLessonInfoAndType(_lessonInfo,_type);
+
+    upLoadWetalkPart( _lessonInfo.id );
+}
+
+void WeeduSchoolUnitWidget::upLoadWetalkPart( const int _Part_id )
+{
+    m_getWetalkgetPartListReply = EchoWebHttpApi::instance()->getWetalkPartList( this,  _Part_id  );
+
+    connect(m_getWetalkgetPartListReply, &EntityNetworkReplyHolder::signal_onSuccess,
+            this, &WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListSuccess);
+    connect(m_getWetalkgetPartListReply, &EntityNetworkReplyHolder::signal_onError,
+            this, &WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListFailure);
+}
+
+void WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListSuccess(const QString &response)
+{
+
+}
+
+void WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListFailure(const QString &response)
+{
+
 }

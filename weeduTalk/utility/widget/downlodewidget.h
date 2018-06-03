@@ -26,7 +26,7 @@ public:
 
 public:
 signals:
-    void signal_UpdateAppSuccess();
+    void signal_downloadZipFileSuccess();
 
 public:
 //    void upgrade(const UpdataInfo &data);
