@@ -52,7 +52,8 @@ private slots:
     void slot_onGetWetalkgetPartListFailure(const QString &response);
 
     void slot_clickSchoolUnitItem( const int _id, const UNIT_WEEDUSCHOOL_TYPE _type );
-    void slot_clickSchoolLessonItem(const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type );
+    void slot_clickSchoolLessonItem(const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type,
+                                    const QString filePath);
 
 private:
     Ui::WeeduSchoolUnitWidget *ui;
@@ -69,6 +70,8 @@ private:
 
     wetalkgetUnitInfo_t         m_weeduChooseUnitInfoList;
     wetalkgetLessonInfo_t       m_weeduChooseLessonInfoList;
+
+    QString                     m_classInfoFilepath;
 
 };
 

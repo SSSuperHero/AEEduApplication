@@ -84,95 +84,19 @@ background-color: rgba(255, 255, 255, 0);
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
+         <layout class="QVBoxLayout" name="verticalLayoutPartList">
+          <property name="spacing">
+           <number>20</number>
+          </property>
           <property name="leftMargin">
            <number>30</number>
           </property>
-          <item>
-           <widget class="QPushButton" name="listenButton">
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-text-align : left;
-background-color: rgb(255, 255, 255);
-border-radius:5px;
-}
-QPushButton:pressed{
-background-color: rgb(255, 255, 255);
-}
-
-</string>
-            </property>
-            <property name="text">
-             <string>1.Listening</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="readButton">
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-             </font>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-text-align : left;
-background-color: rgb(255, 255, 255);
-border-radius:5px;
-}</string>
-            </property>
-            <property name="text">
-             <string>2.Reading</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="quizButton">
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-             </font>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-text-align : left;
-background-color: rgb(255, 255, 255);
-border-radius:5px;
-}</string>
-            </property>
-            <property name="text">
-             <string>3.Quiz</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
          </layout>
         </item>
        </layout>

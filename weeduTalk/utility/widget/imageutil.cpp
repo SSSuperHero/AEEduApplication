@@ -26,48 +26,48 @@ bool ImageUtil::setBackgroundImage(QWidget* label, const QString& styleSheetSect
         return false;
     }
 
-    QString filePath;
-    if( imageFilePath.indexOf(":") != 0 )
-    {
-        QPixmap pixmap;
-        bool ret = pixmap.load(imageFilePath);
-        if (!ret)
-        {
-            qCritical("load imageFilePath:%s failed", qUtf8Printable(imageFilePath));
-            return false;
-        }
+    QString filePath = imageFilePath;
+//    if( imageFilePath.indexOf(":") != 0 )
+//    {
+//        QPixmap pixmap;
+//        bool ret = pixmap.load(imageFilePath);
+//        if (!ret)
+//        {
+//            qCritical("load imageFilePath:%s failed", qUtf8Printable(imageFilePath));
+//            return false;
+//        }
 
-        const QRect rcLabel = label->geometry();
-        QPixmap finalP = centerCrop(pixmap, rcLabel.width(), rcLabel.height());
+//        const QRect rcLabel = label->geometry();
+//        QPixmap finalP = centerCrop(pixmap, rcLabel.width(), rcLabel.height());
 
-        filePath = croppedImageFilePath(imageFilePath, rcLabel.width(), rcLabel.height());
-        qInfo("cropped image file path:%s", qUtf8Printable(filePath));
+//        filePath = croppedImageFilePath(imageFilePath, rcLabel.width(), rcLabel.height());
+//        qInfo("cropped image file path:%s", qUtf8Printable(filePath));
 
-        if (!QFile::exists(filePath))
-        {
-            qInfo("file not exits");
-            QFile file(filePath);
-            if (!file.open(QIODevice::WriteOnly))
-            {
-                qCritical("file open failed");
-                return false;
-            }
+//        if (!QFile::exists(filePath))
+//        {
+//            qInfo("file not exits");
+//            QFile file(filePath);
+//            if (!file.open(QIODevice::WriteOnly))
+//            {
+//                qCritical("file open failed");
+//                return false;
+//            }
 
-            if (!finalP.save(&file, "PNG"))
-            {
-                qCritical("save filePath failed");
-                return false;
-            }
-        }
-        else
-        {
-            qInfo("file exists");
-        }
-    }
-    else
-    {
-        filePath = imageFilePath;
-    }
+//            if (!finalP.save(&file, "PNG"))
+//            {
+//                qCritical("save filePath failed");
+//                return false;
+//            }
+//        }
+//        else
+//        {
+//            qInfo("file exists");
+//        }
+//    }
+//    else
+//    {
+//        filePath = imageFilePath;
+//    }
 
     StyleSheetUtil styleUtil;
     if(bBackgroundImage)

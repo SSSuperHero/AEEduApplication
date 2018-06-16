@@ -16,6 +16,7 @@ struct wetalkgetUnitInfo
     bool unitLock;
     bool testLock;
     QString picture_url;
+    int stars;
 };
 
 BEGIN_FROM_JSON(wetalkgetUnitInfo)
@@ -29,6 +30,7 @@ MEMBER_FROM_JSON(scores)
 MEMBER_FROM_JSON(unitLock)
 MEMBER_FROM_JSON(testLock)
 MEMBER_FROM_JSON(picture_url)
+MEMBER_FROM_JSON(stars)
 END_FROM_JSON()
 
 //一键播放请求

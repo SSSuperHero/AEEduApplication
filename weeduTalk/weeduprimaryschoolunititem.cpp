@@ -8,9 +8,39 @@ WeeduPrimarySchoolUnitItem::WeeduPrimarySchoolUnitItem(QWidget *parent) :
     ui->setupUi(this);
 }
 
+void WeeduPrimarySchoolUnitItem::showStartsNum( const int _starsNum )
+{
+    ui->labelStar1->setStyleSheet("border-image: url(:/images/primary_starOff.png);");
+    ui->labelStar2->setStyleSheet("border-image: url(:/images/primary_starOff.png);");
+    ui->labelStar3->setStyleSheet("border-image: url(:/images/primary_starOff.png);");
+
+    switch (_starsNum)
+    {
+    case 1:
+        ui->labelStar1->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        break;
+
+    case 2:
+        ui->labelStar1->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        ui->labelStar2->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        break;
+
+    case 3:
+        ui->labelStar1->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        ui->labelStar2->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        ui->labelStar3->setStyleSheet("border-image: url(:/images/primary_StarOn.png);");
+        break;
+
+    default:
+        break;
+    }
+}
+
 void WeeduPrimarySchoolUnitItem::bind(const wetalkgetUnitInfo _wetalkgetUnitInfo)
 {
     setWeeduSchoolId( _wetalkgetUnitInfo.id );
+
+    showStartsNum( _wetalkgetUnitInfo.stars );
 }
 
 void WeeduPrimarySchoolUnitItem::setBackgroundPic( const int _num )

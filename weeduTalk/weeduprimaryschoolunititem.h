@@ -20,8 +20,13 @@ public:
     ~WeeduPrimarySchoolUnitItem();
 
     void setBackgroundPic(const int _num);
+
+private:
+    void showStartsNum(const int _starsNum);
+
 private:
     Ui::WeeduPrimarySchoolUnitItem *ui;
+
 };
 
 #endif // WEEDUPRIMARYSCHOOLUNITITEM_H

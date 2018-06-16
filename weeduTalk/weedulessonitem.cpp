@@ -17,7 +17,9 @@ void WeeduLessonItem::bind(const wetalkgetLessonInfo _wetalkgetLessonInfo)
 
     ui->label_name->setText( _wetalkgetLessonInfo.name );
     ui->label_accuracy->setText( QString::number( _wetalkgetLessonInfo.accuracy ) + "%" );
+    ui->progressAccuracy->setValue( _wetalkgetLessonInfo.accuracy );
     ui->label_completion->setText( QString::number( _wetalkgetLessonInfo.completion_rate ) + "%" );
+    ui->progressCompletion->setValue( _wetalkgetLessonInfo.completion_rate );
 
     setWeeduSchooLessonlId( _wetalkgetLessonInfo );
 }

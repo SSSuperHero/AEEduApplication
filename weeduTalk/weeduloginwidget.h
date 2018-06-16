@@ -12,7 +12,7 @@ class WeeduLoginWidget;
 }
 
 namespace  {
-    const QString KEY_LOGIN_INFO  = "login/info";
+    const QString KEY_LOGIN_INFO  = "weeduLogin/info";
 }
 
 

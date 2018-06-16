@@ -69,11 +69,12 @@ protected:
 public:
     void setWeeduSchooLessonlId(const wetalkgetLessonInfo _lessonInfo);
 signals:
-    void signal_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type );
+    void signal_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type,
+                                       const QString filePath);
 
 public slots:
 
-    void slot_downloadZipFileSuccess();
+    void slot_downloadZipFileSuccess(QString filePath, const int _fileId);
 private:
     int                                 m_weeduSchoolId;
     static LESSON_WEEDUSCHOOL_TYPE      m_weeduSchoolType;

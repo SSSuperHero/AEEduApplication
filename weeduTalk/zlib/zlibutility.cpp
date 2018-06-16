@@ -50,7 +50,7 @@ void ZlibUtility::uncompressedFile( QString FileName ,QStringList & ListPic )
                 QDir _secdir;
                 _secdir.mkpath( UnpressPath + "/" + _mkDirPath );
 
-                _fileDir = _fileDir.mid(_fileDir.indexOf("/") + 1 );
+                _fileDir = _fileDir.mid( _fileDir.indexOf("/") + 1 );
                 qDebug()<<"uncompressedFile _fileDir:"<<_fileDir;
             }
 

@@ -131,7 +131,7 @@ color:#666666;
 text-align:left;</string>
          </property>
          <property name="text">
-          <string/>
+          <string>mingquan</string>
          </property>
          <property name="placeholderText">
           <string>输入号码</string>
@@ -159,6 +159,9 @@ border-radius:5px;
 font-size:14px;*/
 color:#666666;
 text-align:left;</string>
+         </property>
+         <property name="text">
+          <string>a12345678</string>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>

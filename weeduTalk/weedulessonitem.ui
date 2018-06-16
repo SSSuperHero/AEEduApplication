@@ -155,9 +155,9 @@ background-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="QProgressBar" name="progressBar">
+            <widget class="QProgressBar" name="progressAccuracy">
              <property name="value">
-              <number>24</number>
+              <number>0</number>
              </property>
             </widget>
            </item>
@@ -210,9 +210,9 @@ background-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="QProgressBar" name="progressBar_2">
+            <widget class="QProgressBar" name="progressCompletion">
              <property name="value">
-              <number>24</number>
+              <number>0</number>
              </property>
             </widget>
            </item>

@@ -72,13 +72,6 @@ void WeeduLoginWidget::slot_onWebLoginSuccess(const QString &response)
 
     emit signal_loginSuccess();
 
-//    EchoWebHttpApi::instance()->getWetalkgetLevelList( this, 2 );
-
-//    EchoWebHttpApi::instance()->getWetalkUnitList( this, 2, 1 );
-
-//    EchoWebHttpApi::instance()->getWetalkUnitItem( this, 1 );
-
-//    EchoWebHttpApi::instance()->getWetalkPartList( this, 1 );
 }
 
 void WeeduLoginWidget::slot_onWebLoginFailure(const QString& response)

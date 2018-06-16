@@ -20,6 +20,9 @@ public:
     ~WeeduMiddleSchoolUnitItem();
 
 private:
+    void showStartsNum(const int _starsNum);
+
+private:
     Ui::WeeduMiddleSchoolUnitItem *ui;
 };
 

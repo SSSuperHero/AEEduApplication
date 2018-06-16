@@ -3,7 +3,8 @@
 #include <QPainter>
 
 ClickedLabel::ClickedLabel(QString str,QWidget *parent):
-    QLabel(parent)
+    QLabel(parent),
+    m_infoId(0)
 {
     setText(str);
 }
@@ -40,7 +41,18 @@ void ClickedLabel::paintEvent(QPaintEvent *e)
 
 void ClickedLabel::mouseReleaseEvent(QMouseEvent *e)
 {
-    emit Clicked(this);
+    emit Clicked( this );
 
     QWidget::mouseReleaseEvent(e);
 }
+
+void ClickedLabel::setInfoId( const int _infoId )
+{
+    m_infoId = _infoId;
+}
+
+int ClickedLabel::getInfoId()
+{
+    return m_infoId;
+}
+

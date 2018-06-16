@@ -26,11 +26,11 @@ public:
 
 public:
 signals:
-    void signal_downloadZipFileSuccess();
+    void signal_downloadZipFileSuccess( QString filePath, const int _fileId );
 
 public:
 //    void upgrade(const UpdataInfo &data);
-    void downlodeFile( const QString _fileUrl );
+    void downlodeFile(const QString _fileUrl , const int _fileId);
 
 private slots:
     void slot_onStart_download();
@@ -40,9 +40,11 @@ private slots:
     void slot_downloadProgress_download(double percent, qint64, qint64);
 
 private:
-    Ui::downlodeWidget *ui;
+    Ui::downlodeWidget              *ui;
 
-    NetWorkDownloadReplyHolder *downloadReply;
+    NetWorkDownloadReplyHolder      *downloadReply;
+
+    int                             m_downlodeFileId;
 };
 
 #endif // DOWNLODEWIDGET_H

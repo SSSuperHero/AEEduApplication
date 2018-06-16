@@ -5,7 +5,8 @@
 
 downlodeWidget::downlodeWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::downlodeWidget)
+    ui(new Ui::downlodeWidget),
+    m_downlodeFileId(0)
 {
     ui->setupUi(this);
 
@@ -19,12 +20,14 @@ downlodeWidget::~downlodeWidget()
     delete ui;
 }
 
-void downlodeWidget::downlodeFile(const QString _fileUrl)
+void downlodeWidget::downlodeFile( const QString _fileUrl, const int _fileId )
 {
     qInfo("upgrade");
 
     if( _fileUrl.isEmpty() )
         return;
+
+    m_downlodeFileId = _fileId;
 
     downloadReply = DownloadUtil::downloadZipFile(this, _fileUrl);
     connect(downloadReply, &NetWorkDownloadReplyHolder::signal_onStart,
@@ -57,7 +60,7 @@ void downlodeWidget::slot_onSuccess_download(const QString &filePath)
 
     this->hide();
 
-    emit signal_downloadZipFileSuccess();
+    emit signal_downloadZipFileSuccess( filePath, m_downlodeFileId );
 }
 
 void downlodeWidget::slot_onFailure_download(int errorCode)

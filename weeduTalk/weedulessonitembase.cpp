@@ -2,6 +2,7 @@
 #include "weedulessonitem.h"
 #include "weeduhighschoollesson.h"
 #include "utility/widget/downlodewidget.h"
+#include <QDebug>
 
 LESSON_WEEDUSCHOOL_TYPE WeeduLessonItemBase::m_weeduSchoolType = HIGHSCHOOL_LESSON_ITEM;
 
@@ -43,15 +44,20 @@ void WeeduLessonItemBase::mouseReleaseEvent(QMouseEvent *event)
 {
     if ( m_weeduSchoolType > HIGHSCHOOL_LESSON_ITEM )
     {
-        downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url );
+        downlodeWidget::instance()->downlodeFile( m_wetalkgetLessonInfo.zip_url, m_wetalkgetLessonInfo.id );
     }
 
     QWidget::mouseReleaseEvent( event );
 }
 
-void WeeduLessonItemBase::slot_downloadZipFileSuccess()
+void WeeduLessonItemBase::slot_downloadZipFileSuccess( QString filePath, const int _fileId )
 {
-    emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType );
+    QString _partFilePath = filePath.remove( ".zip" );
+
+    if( _fileId == m_wetalkgetLessonInfo.id )
+        emit signal_clickSchoolLessonItem( m_wetalkgetLessonInfo, m_weeduSchoolType, _partFilePath );
+
+    qDebug()<<"slot_downloadZipFileSuccess id:"<<_fileId<<m_wetalkgetLessonInfo.id<<filePath;
 }
 
 void WeeduLessonItemBase::setWeeduSchooLessonlId(const wetalkgetLessonInfo _lessonInfo)

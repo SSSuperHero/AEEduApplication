@@ -8,7 +8,8 @@ WeeduSchoolUnitWidget::WeeduSchoolUnitWidget(QWidget *parent) :
     BaseMainWidget(parent),
     ui(new Ui::WeeduSchoolUnitWidget),
     m_layoutWidgetbase ( NULL ),
-    m_weeduSchoolItemType( WEEDUSCHOOL_ITEM_UNIT )
+    m_weeduSchoolItemType( WEEDUSCHOOL_ITEM_UNIT ),
+    m_classInfoFilepath( "" )
 {
     ui->setupUi(this);
 
@@ -123,7 +124,8 @@ void WeeduSchoolUnitWidget::upSchoolUnitWidget( const wetalkgetUnitInfo_t &_weta
     int _rowNum = getCurrentRowNum( _unitType );
     updateBackgroundPic( _unitType );
 
-    clearLayout( ui->unitItemLayout );
+    if( ui->unitItemLayout->count() > 0 )
+        clearLayout( ui->unitItemLayout );
 
     if( m_layoutWidgetbase )
     {
@@ -263,18 +265,18 @@ void WeeduSchoolUnitWidget::slot_clickSchoolUnitItem(const int _id, const UNIT_W
     }
 }
 
-void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type )
+void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type,
+                                                        const QString filePath )
 {
-
-//    m_lessonGuideWidget->setGeometry(this->geometry());
-//    m_lessonGuideWidget->show();
-//    m_lessonGuideWidget->setLessonInfoAndType(_lessonInfo,_type);
+    m_classInfoFilepath = filePath;
 
     upLoadWetalkPart( _lessonInfo.id );
 }
 
 void WeeduSchoolUnitWidget::upLoadWetalkPart( const int _Part_id )
 {
+    qDebug()<<"upLoadWetalkPart _Part_id:"<<_Part_id;
+
     m_getWetalkgetPartListReply = EchoWebHttpApi::instance()->getWetalkPartList( this,  _Part_id  );
 
     connect(m_getWetalkgetPartListReply, &EntityNetworkReplyHolder::signal_onSuccess,
@@ -285,7 +287,15 @@ void WeeduSchoolUnitWidget::upLoadWetalkPart( const int _Part_id )
 
 void WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListSuccess(const QString &response)
 {
+    m_lessonGuideWidget->setPartFilePath( m_classInfoFilepath );
 
+    m_lessonGuideWidget->setGeometry(this->geometry());
+//    m_lessonGuideWidget->setLessonInfoAndType(_lessonInfo,_type);
+
+    HttpEntity<wetalkgetPartInfo_t> partInfoList;
+    fromJson( response, partInfoList );
+    m_lessonGuideWidget->loadData( partInfoList.data );
+    m_lessonGuideWidget->show();
 }
 
 void WeeduSchoolUnitWidget::slot_onGetWetalkgetPartListFailure(const QString &response)
