@@ -86,6 +86,11 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
     fp.close();
 }
 
+void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+    this->close();
+}
+
 void WeEduLessonGuideWidget::on_listenButton_clicked()
 {
 
