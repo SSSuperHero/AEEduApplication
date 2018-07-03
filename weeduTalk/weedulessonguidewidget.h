@@ -166,6 +166,8 @@ END_FROM_JSON()
 
 typedef QVector<wetalkDataList> wetalkDataList_t;
 
+typedef QVector<QString> QString_t;
+
 struct wetalkevents
 {
     int         num;
@@ -178,7 +180,7 @@ struct wetalkevents
     QString     answer;
     QString     cloze_answer;
     QString     picture;
-    QStringList     pictures;
+    QString_t     pictures;
     QString     name;
     QString     avatar;
     QString     role;
@@ -204,7 +206,6 @@ MEMBER_FROM_JSON(answer)
 MEMBER_FROM_JSON(cloze_answer)
 MEMBER_FROM_JSON(picture)
 MEMBER_FROM_JSON(pictures)
-MEMBER_FROM_JSON(picture)
 MEMBER_FROM_JSON(name)
 MEMBER_FROM_JSON(avatar)
 MEMBER_FROM_JSON(role)
