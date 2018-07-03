@@ -74,7 +74,8 @@ SOURCES += \
     zlib/zlibutility.cpp \
     utility/widget/downlodewidget.cpp \
     weedulessonguidewidget.cpp \
-    weeduchooselevelitem.cpp
+    weeduchooselevelitem.cpp \
+    lessonRouter/weedulessonrouter.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -127,7 +128,8 @@ HEADERS += \
     zlib/zlibutility.h \
     utility/widget/downlodewidget.h \
     weedulessonguidewidget.h \
-    weeduchooselevelitem.h
+    weeduchooselevelitem.h \
+    lessonRouter/weedulessonrouter.h
 
 FORMS += \
     weeduloginwidget.ui \

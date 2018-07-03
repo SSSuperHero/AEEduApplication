@@ -5,6 +5,7 @@
 #include "utility/pathutil.h"
 #include <QFile>
 #include <QDebug>
+#include <lessonRouter/weedulessonrouter.h>
 
 WeEduLessonGuideWidget::WeEduLessonGuideWidget(QWidget *parent) :
     QWidget(parent),
@@ -82,6 +83,9 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
         qDebug()<<"analysisPartJson:"<<_classInfo.unit_id;
         qDebug()<<"analysisPartJson:"<<_classInfo.part_id;
         qDebug()<<"analysisPartJson:"<<_classInfo.media_type;
+
+        WeeduLessonRouter *router = WeeduLessonRouter::instance();
+        router->showRouterWithClassInfoAndWidget(_classInfo, this);
     }
     fp.close();
 }
