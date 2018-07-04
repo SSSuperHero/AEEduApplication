@@ -1,25 +1,25 @@
-#ifndef ECHOMEDIAPLAYER_H
-#define ECHOMEDIAPLAYER_H
+#ifndef MEDIAPLAYMANAGER_H
+#define MEDIAPLAYMANAGER_H
 
 #include <QObject>
-//#include <QtMultimedia>
 #include <QtAV/QtAV>
 #include "config/define.h"
+#include "mybasesingleton.h"
 
-
-class EchoMediaPlayer : public QObject
+class MediaPlayManager : public QObject
 {
     Q_OBJECT
+
+    MY_DECLARE_SINGLETON(MediaPlayManager)
+
 public:
-    explicit EchoMediaPlayer(QObject *parent = nullptr);
+    MediaPlayManager(QObject *parent = nullptr);
 
     void init();
 
-    ~EchoMediaPlayer();
+    ~MediaPlayManager();
 signals:
-    void playStateUpdate(const MUESIC_PLAY_STATUS);
-    void updatePlayProgress( QString, int );
-    void signal_playOverThenNext(bool isClick);
+    void signal_playOverThenNext();
 public slots:
     void slot_durationChanged(qint64 duration);
     void slot_positionChanged(qint64 position);
@@ -33,19 +33,14 @@ public:
     int getVolume();
 
     void setPlayStatus( const MUESIC_PLAY_STATUS _playStatus );
-    MUESIC_PLAY_STATUS getPlayStatus();
 public:
     void skipPlayTime(const int _skipTime);
     void skipPlayPercentage( const int _skipTime );
-    void bellLogPlayStart(const QString &_url, const QString &_startTime, const QString &_endTime);
-
-private:
-    void init_mediaPlayer(const char* url);
 
 private:
 //    QMediaPlayer                *m_echoMediaPlayer;
     QtAV::VideoOutput           *m_videoOutput;
-    QtAV::AVPlayer              *m_echoMediaPlayer;
+    QtAV::AVPlayer              *m_mediaPlayer;
 
     QString                     m_currentPlayURL;
 //    QTimer*                     m_updatePalyTimer;
@@ -58,12 +53,7 @@ private:
     double                      m_currentVolume;
     MUESIC_PLAY_STATUS          currentPlayStatus;
 
-    bool                        m_bellLogPlayFlag;
-    bool                        m_bellskipFlag;
-    int                         m_bellStartTime;
-    int                         m_bellEndTime;
-
     qint64                      m_currentPlayDuration;
 };
 
-#endif // ECHOMEDIAPLAYER_H
+#endif // MEDIAPLAYMANAGER_H

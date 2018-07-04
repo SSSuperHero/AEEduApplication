@@ -11,26 +11,10 @@ class WeeduLessonRouter : public QObject
     MY_DECLARE_SINGLETON(WeeduLessonRouter)
 public:
     explicit WeeduLessonRouter(QObject *parent = nullptr);
-//    static WeeduLessonRouter* GetInstance()
-//    {
-//        if(m_pInstance == NULL)
-//        {
-//            m_pInstance = new WeeduLessonRouter();
-//        }
-//        return m_pInstance;
-//    }
-
-//    static void Release()
-//    {
-//        if(m_pInstance != NULL)
-//        {
-//            delete m_pInstance;
-//            m_pInstance = NULL;
-//        }
-//    }
 
     void showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo, QWidget *_widget);
 
+    void playAudio(const QString _file);
 private:
     static WeeduLessonRouter *m_pInstance;
 

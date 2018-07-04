@@ -23,6 +23,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+macx{
+
+INCLUDEPATH += "$$PWD/QtAv/include"
+LIBS += "-F$$PWD/QtAv/lib/"
+LIBS += -framework QtAV
+
+#INCLUDEPATH += "$$PWD/QtAv/lib/QtAVWidgets.framework/Headers"
+LIBS += -framework QtAVWidgets
+
+}
+
+win32{
+
+INCLUDEPATH += "$$PWD/QtAv/include"
+LIBS += -L$$PWD/QtAv/lib/ -lQtAV1 -lQtAVWidgets1
+
+}
+
 macx: LIBS += -L$$PWD/zlib/lib/ -lz
 
 INCLUDEPATH += $$PWD/zlib/include
@@ -75,7 +93,8 @@ SOURCES += \
     utility/widget/downlodewidget.cpp \
     weedulessonguidewidget.cpp \
     weeduchooselevelitem.cpp \
-    lessonRouter/weedulessonrouter.cpp
+    lessonRouter/weedulessonrouter.cpp \
+    mgr/media/mediaplaymanager.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -129,7 +148,8 @@ HEADERS += \
     utility/widget/downlodewidget.h \
     weedulessonguidewidget.h \
     weeduchooselevelitem.h \
-    lessonRouter/weedulessonrouter.h
+    lessonRouter/weedulessonrouter.h \
+    mgr/media/mediaplaymanager.h
 
 FORMS += \
     weeduloginwidget.ui \
