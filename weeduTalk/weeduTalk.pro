@@ -94,7 +94,12 @@ SOURCES += \
     weedulessonguidewidget.cpp \
     weeduchooselevelitem.cpp \
     lessonRouter/weedulessonrouter.cpp \
-    mgr/media/mediaplaymanager.cpp
+    mgr/media/mediaplaymanager.cpp \
+    weeducomprehensionwidget.cpp \
+    utility/widget/selectitemwidget.cpp \
+    utility/widget/bottomcontrolwidget.cpp \
+    utility/widget/headcontrolwidget.cpp \
+    utility/widget/topcontrolwidget.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -149,7 +154,12 @@ HEADERS += \
     weedulessonguidewidget.h \
     weeduchooselevelitem.h \
     lessonRouter/weedulessonrouter.h \
-    mgr/media/mediaplaymanager.h
+    mgr/media/mediaplaymanager.h \
+    weeducomprehensionwidget.h \
+    utility/widget/selectitemwidget.h \
+    utility/widget/bottomcontrolwidget.h \
+    utility/widget/headcontrolwidget.h \
+    utility/widget/topcontrolwidget.h
 
 FORMS += \
     weeduloginwidget.ui \
@@ -164,7 +174,12 @@ FORMS += \
     weeduhighschoollesson.ui \
     utility/widget/downlodewidget.ui \
     weedulessonguidewidget.ui \
-    weeduchooselevelitem.ui
+    weeduchooselevelitem.ui \
+    weeducomprehensionwidget.ui \
+    utility/widget/selectitemwidget.ui \
+    utility/widget/bottomcontrolwidget.ui \
+    utility/widget/headcontrolwidget.ui \
+    utility/widget/topcontrolwidget.ui
 
 RESOURCES += \
     resource.qrc

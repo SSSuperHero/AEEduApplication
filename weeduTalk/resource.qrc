@@ -60,5 +60,19 @@
         <file>images/primary_unit8.png</file>
         <file>images/primary_unitClose.png</file>
         <file>images/high_bg.png</file>
+        <file>images/btn Next.png</file>
+        <file>images/btn_ circulation.png</file>
+        <file>images/btn_ exercise.png</file>
+        <file>images/btn_close.png</file>
+        <file>images/btn_closeOn.png</file>
+        <file>images/btn_listen.png</file>
+        <file>images/btn_max.png</file>
+        <file>images/btn_maxOn.png</file>
+        <file>images/btn_min.png</file>
+        <file>images/btn_minOn.png</file>
+        <file>images/btn_pauseOff.png</file>
+        <file>images/btn_Prev.png</file>
+        <file>images/courseNum.png</file>
+        <file>images/courseNumOn.png</file>
     </qresource>
 </RCC>

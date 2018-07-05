@@ -3,6 +3,7 @@
 #include <QDebug>
 #include "utility/userinfo.h"
 #include "mgr/media/mediaplaymanager.h"
+#include "weeducomprehensionwidget.h"
 
 WeeduMainWidget::WeeduMainWidget(QWidget *parent) :
     BaseMainWidget(parent),
@@ -12,6 +13,9 @@ WeeduMainWidget::WeeduMainWidget(QWidget *parent) :
     ui->setupUi(this);
 
     init();
+
+//    WeeduComprehensionWidget *_weeduComprehensionWidget = new WeeduComprehensionWidget();
+//    _weeduComprehensionWidget->show();
 }
 
 void WeeduMainWidget::init()
@@ -36,8 +40,6 @@ void WeeduMainWidget::slot_loginSuccess()
     ui->label_head->setPixmap( QPixmap(userInfoMgr::instance()->getUserInfo().avatar_url) );
 
     MediaPlayManager::instance()->mediaPlayStart( "https://qn-qn-echo-cp-cdn.app-echo.com/c2/2e993a75fae51edd8e31f8c3e5c795eaef4c68326d496d2e71eaa839c4a64b29df29d0e7.mp3?1515038793" );
-//    WeeduLessonRouter::instance()->playAudio( "https://qn-qn-echo-cp-cdn.app-echo.com/c2/2e993a75fae51edd8e31f8c3e5c795eaef4c68326d496d2e71eaa839c4a64b29df29d0e7.mp3?1515038793" );
-
 }
 
 void WeeduMainWidget::slot_clickWeeduChooseLevelItem(const int _leaveId)
