@@ -95,21 +95,6 @@ void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
     this->close();
 }
 
-void WeEduLessonGuideWidget::on_listenButton_clicked()
-{
-
-}
-
-void WeEduLessonGuideWidget::on_readButton_clicked()
-{
-
-}
-
-void WeEduLessonGuideWidget::on_quizButton_clicked()
-{
-
-}
-
 void WeEduLessonGuideWidget::slot_clickPartItem( ClickedLabel *_partItem )
 {
     analysisPartJson( _partItem->getInfoId() );

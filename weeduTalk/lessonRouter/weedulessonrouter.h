@@ -15,9 +15,10 @@ public:
     void showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo, QWidget *_widget);
 
     void playAudio(const QString _file);
-private:
-    static WeeduLessonRouter *m_pInstance;
 
+private:
+    static WeeduLessonRouter *m_pInstance;   
+    void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
 
 signals:
 
