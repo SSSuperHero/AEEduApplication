@@ -17,9 +17,16 @@ public:
 
 public:
 signals:
-    void signal_close();
-    void signal_max();
-    void signal_min();
+    void signal_widgetClose();
+    void signal_widgetMax();
+    void signal_widgetMin();
+
+private slots:
+    void on_pushButtonMin_clicked();
+
+    void on_pushButton_max_clicked();
+
+    void on_pushButton_close_clicked();
 
 private:
     Ui::HeadControlWidget *ui;

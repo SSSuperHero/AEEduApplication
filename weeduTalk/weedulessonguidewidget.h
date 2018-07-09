@@ -241,6 +241,7 @@ struct wetalkgetClassInfo
     wetalkevents_t  systems;
     wetalkevents_t  results;
     wetalkevents_t  events;
+    wetalkevents_t  dataList;
 };
 
 BEGIN_FROM_JSON(wetalkgetClassInfo)

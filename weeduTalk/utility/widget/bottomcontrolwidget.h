@@ -24,6 +24,19 @@ signals:
     void signal_playRepeat();
     void signal_listen();
 
+private slots:
+    void on_pushButtonPause_clicked();
+
+    void on_pushButtonPrev_clicked();
+
+    void on_pushButtonNext_clicked();
+
+    void on_pushButtonAgain_clicked();
+
+    void on_pushButtonSpeak_clicked();
+
+    void on_pushButtonListen_clicked();
+
 private:
     Ui::BottomControlWidget *ui;
 };
