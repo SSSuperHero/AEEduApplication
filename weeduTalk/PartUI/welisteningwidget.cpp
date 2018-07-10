@@ -14,7 +14,7 @@ WeListeningWidget::~WeListeningWidget()
     delete ui;
 }
 
-WeListeningWidget::init()
+void WeListeningWidget::init()
 {
     m_bottomControlWidget = new BottomControlWidget( this );
     m_headControlWidget = new HeadControlWidget( this );

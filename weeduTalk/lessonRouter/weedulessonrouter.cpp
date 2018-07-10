@@ -10,22 +10,21 @@ void WeeduLessonRouter::showRouterWithClassInfoAndWidget(wetalkgetClassInfo _cla
 {
     if (_classInfo.events.size() > 0)
     {
-        selectUIWithDatasource(_classInfo.events , 0);
+        selectUIWithDatasourceAndCurrentStep(_classInfo.events , 0);
     }
     if (_classInfo.dataList.size() > 0)
     {
-        selectUIWithDatasource(_classInfo.events , 0);
+        selectUIWithDatasourceAndCurrentStep(_classInfo.events , 0);
     }
 
 }
 
-void WeeduLessonRouter::selectUIWithDatasource(wetalkevents_t datasource, int currentStep)
+void WeeduLessonRouter::selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep)
 {
     wetalkevents eventInfo = datasource[currentStep];
     if (eventInfo.type == "passage_listening") {
-        WeListeningWidget listenView =  new WeListeningWidget;
-        listenView.renderWithEventInfo(eventInfo);
-
+        WeListeningWidget *listenView =  new WeListeningWidget;
+        listenView->renderWithEventInfo(eventInfo);
     } else if (eventInfo.type == "passage_comprehension") {
 
     } else if (eventInfo.type == "passage_reading") {
