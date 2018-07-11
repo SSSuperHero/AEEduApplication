@@ -2,12 +2,13 @@
 #define HEADCONTROLWIDGET_H
 
 #include <QWidget>
+#include "utility/widget/basewidget.h"
 
 namespace Ui {
 class HeadControlWidget;
 }
 
-class HeadControlWidget : public QWidget
+class HeadControlWidget : public BaseWidget
 {
     Q_OBJECT
 

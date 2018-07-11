@@ -2,10 +2,14 @@
 #include "ui_headcontrolwidget.h"
 
 HeadControlWidget::HeadControlWidget(QWidget *parent) :
-    QWidget(parent),
+    BaseWidget(parent),
     ui(new Ui::HeadControlWidget)
 {
     ui->setupUi(this);
+
+    reSetSize( ui->pushButtonMin );
+    reSetSize( ui->pushButton_max );
+    reSetSize( ui->pushButton_close);
 }
 
 HeadControlWidget::~HeadControlWidget()

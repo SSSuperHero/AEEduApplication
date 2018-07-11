@@ -118,8 +118,9 @@ void WeeduSchoolUnitWidget::upSchoolUnitWidget( const wetalkgetUnitInfo_t &_weta
 
     m_weeduSchoolItemType = WEEDUSCHOOL_ITEM_UNIT;
     m_weeduChooseUnitInfoList = _wetalkgetUnitInfoList;
-
+qDebug()<<"upSchoolUnitWidget 1:";
     ui->label_name->setText( _wetalkgetUnitInfoList.at(0).name );
+qDebug()<<"upSchoolUnitWidget 2:";
 
     int _rowNum = getCurrentRowNum( _unitType );
     updateBackgroundPic( _unitType );

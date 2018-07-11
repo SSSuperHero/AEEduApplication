@@ -2,12 +2,13 @@
 #define BOTTOMCONTROLWIDGET_H
 
 #include <QWidget>
+#include "utility/widget/basewidget.h"
 
 namespace Ui {
 class BottomControlWidget;
 }
 
-class BottomControlWidget : public QWidget
+class BottomControlWidget : public BaseWidget
 {
     Q_OBJECT
 
@@ -15,7 +16,6 @@ public:
     explicit BottomControlWidget(QWidget *parent = 0);
     ~BottomControlWidget();
 
-public:
 signals:
     void signal_palyPause();
     void signal_playPrev();
@@ -26,15 +26,10 @@ signals:
 
 private slots:
     void on_pushButtonPause_clicked();
-
     void on_pushButtonPrev_clicked();
-
     void on_pushButtonNext_clicked();
-
     void on_pushButtonAgain_clicked();
-
     void on_pushButtonSpeak_clicked();
-
     void on_pushButtonListen_clicked();
 
 private:

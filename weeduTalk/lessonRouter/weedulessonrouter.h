@@ -33,6 +33,9 @@ public:
 
 //    void playAudio(const QString _file);
 
+private:
+    void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
+
 signals:
 
 public slots:

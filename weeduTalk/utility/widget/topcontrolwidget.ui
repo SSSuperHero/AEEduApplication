@@ -66,6 +66,12 @@ border-image: url(:/images/middle_btn_back.png);</string>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_1">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>20</width>
@@ -82,6 +88,12 @@ border-image: url(:/images/middle_btn_back.png);</string>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_2">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>20</width>
@@ -98,6 +110,12 @@ border-image: url(:/images/middle_btn_back.png);</string>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_3">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>20</width>
@@ -114,6 +132,12 @@ border-image: url(:/images/middle_btn_back.png);</string>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_4">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>20</width>
@@ -157,7 +181,24 @@ border-image: url(:/images/middle_btn_back.png);</string>
     </spacer>
    </item>
    <item>
+    <widget class="QLabel" name="label_text">
+     <property name="styleSheet">
+      <string notr="true">background-color: #5AC8FC;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="pushButton_5">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>20</width>

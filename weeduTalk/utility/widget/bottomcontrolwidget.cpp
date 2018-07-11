@@ -2,10 +2,18 @@
 #include "ui_bottomcontrolwidget.h"
 
 BottomControlWidget::BottomControlWidget(QWidget *parent) :
-    QWidget(parent),
+    BaseWidget(parent),
     ui(new Ui::BottomControlWidget)
 {
     ui->setupUi(this);
+
+    reSetSize( ui->pushButtonSpeak );
+    reSetSize( ui->pushButtonAgain );
+    reSetSize( ui->pushButtonListen );
+    reSetSize( ui->pushButtonNext );
+    reSetSize( ui->pushButtonPause );
+    reSetSize( ui->pushButtonPrev );
+    reSetSize( ui->pushButtonSpeak );
 }
 
 BottomControlWidget::~BottomControlWidget()

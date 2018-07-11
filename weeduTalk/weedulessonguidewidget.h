@@ -260,6 +260,7 @@ MEMBER_FROM_JSON(part_type)
 MEMBER_FROM_JSON(have_questions)
 MEMBER_FROM_JSON(keywords)
 MEMBER_FROM_JSON(dataMenu)
+MEMBER_FROM_JSON(dataList)
 MEMBER_FROM_JSON(systems)
 MEMBER_FROM_JSON(results)
 MEMBER_FROM_JSON(events)
@@ -331,12 +332,6 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
 private slots:
-    void on_listenButton_clicked();
-
-    void on_readButton_clicked();
-
-    void on_quizButton_clicked();
-
     void slot_clickPartItem(ClickedLabel *_partItem );
 
 private:

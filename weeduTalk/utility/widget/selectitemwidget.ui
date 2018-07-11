@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #DCEBF4;
+color: #000000;</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,8">
    <property name="spacing">
     <number>0</number>
@@ -33,6 +37,9 @@
     <widget class="QLabel" name="labelTitle">
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
