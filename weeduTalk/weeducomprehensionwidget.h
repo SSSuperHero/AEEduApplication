@@ -2,7 +2,7 @@
 #define WEEDUCOMPREHENSIONWIDGET_H
 
 #include <QWidget>
-#include "utility/widget/basemainwidget.h"
+#include "utility/widget/weeducoursewidgetbase.h"
 #include "utility/widget/bottomcontrolwidget.h"
 #include "utility/widget/headcontrolwidget.h"
 #include "utility/widget/topcontrolwidget.h"
@@ -12,7 +12,7 @@ namespace Ui {
 class WeeduComprehensionWidget;
 }
 
-class WeeduComprehensionWidget : public BaseMainWidget
+class WeeduComprehensionWidget : public WeeduCourseWidgetBase
 {
     Q_OBJECT
 
@@ -21,7 +21,9 @@ public:
     ~WeeduComprehensionWidget();
 
     void init();
-    void initDataInfo(const wetalkevents _dataInfo);
+    void loadData(const wetalkevents _dataInfo, const int _currentOperateNum);
+private slots:
+    void slot_playNext();
 private:
     Ui::WeeduComprehensionWidget *ui;
 
@@ -30,6 +32,7 @@ private:
     TopControlWidget                *m_topControlWidget;
 
     wetalkevents                    m_operateDataInfo;
+    int                             m_crrentOperateNum;
 };
 
 #endif // WEEDUCOMPREHENSIONWIDGET_H

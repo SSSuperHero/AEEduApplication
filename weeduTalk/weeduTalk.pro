@@ -100,7 +100,8 @@ SOURCES += \
     utility/widget/bottomcontrolwidget.cpp \
     utility/widget/headcontrolwidget.cpp \
     utility/widget/topcontrolwidget.cpp \
-    PartUI/welisteningwidget.cpp
+    PartUI/welisteningwidget.cpp \
+    utility/widget/weeducoursewidgetbase.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -161,7 +162,8 @@ HEADERS += \
     utility/widget/bottomcontrolwidget.h \
     utility/widget/headcontrolwidget.h \
     utility/widget/topcontrolwidget.h \
-    PartUI/welisteningwidget.h
+    PartUI/welisteningwidget.h \
+    utility/widget/weeducoursewidgetbase.h
 
 FORMS += \
     weeduloginwidget.ui \

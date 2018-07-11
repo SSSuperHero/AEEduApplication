@@ -4,8 +4,9 @@
 #include <QDebug>
 
 WeeduComprehensionWidget::WeeduComprehensionWidget(QWidget *parent) :
-    BaseMainWidget(parent),
-    ui(new Ui::WeeduComprehensionWidget)
+    WeeduCourseWidgetBase(parent),
+    ui(new Ui::WeeduComprehensionWidget),
+    m_crrentOperateNum(0)
 {
     ui->setupUi(this);
 
@@ -16,6 +17,8 @@ void WeeduComprehensionWidget::init()
 {
     m_bottomControlWidget = new BottomControlWidget( this );
     ui->horizontalLayout_bottom->addWidget( m_bottomControlWidget );
+    connect( m_bottomControlWidget, &BottomControlWidget::signal_playNext,
+             this, &WeeduComprehensionWidget::slot_playNext );
 
     m_headControlWidget = new HeadControlWidget( this );
     ui->verticalLayout_head->addWidget( m_headControlWidget );
@@ -24,9 +27,10 @@ void WeeduComprehensionWidget::init()
     ui->verticalLayout_head->addWidget( m_topControlWidget );
 }
 
-void WeeduComprehensionWidget::initDataInfo( const wetalkevents _dataInfo )
+void WeeduComprehensionWidget::loadData( const wetalkevents _dataInfo, const int _currentOperateNum )
 {
     m_operateDataInfo = _dataInfo;
+    m_crrentOperateNum = _currentOperateNum;
 
     qDebug()<<"WeeduComprehensionWidget initDataInfo size:"<< m_operateDataInfo.multipleChoicesList.at(0).items.size()<<m_operateDataInfo.num;
     if( m_operateDataInfo.multipleChoicesList.at(0).items.size() > 0 )
@@ -38,6 +42,11 @@ void WeeduComprehensionWidget::initDataInfo( const wetalkevents _dataInfo )
             ui->verticalLayout->addWidget( _selectItem );
         }
     }
+}
+
+void WeeduComprehensionWidget::slot_playNext()
+{
+    emit signal_currentOperateFinish( m_crrentOperateNum + 1 );
 }
 
 WeeduComprehensionWidget::~WeeduComprehensionWidget()

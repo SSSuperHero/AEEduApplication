@@ -75,13 +75,6 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
         wetalkgetClassInfo _classInfo;
         fromJson( jsonString, _classInfo );
 
-//        qDebug()<<"analysisPartJson:"<<jsonString;
-        qDebug()<<"analysisPartJson:"<<_classInfo.lesson_id;
-        qDebug()<<"analysisPartJson:"<<_classInfo.media_filename;
-        qDebug()<<"analysisPartJson:"<<_classInfo.unit_id;
-        qDebug()<<"analysisPartJson:"<<_classInfo.part_id;
-        qDebug()<<"analysisPartJson:"<<_classInfo.media_type;
-
         WeeduLessonRouter *router = WeeduLessonRouter::instance();
         router->showRouterWithClassInfoAndWidget(_classInfo, this);
     }

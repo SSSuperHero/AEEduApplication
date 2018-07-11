@@ -6,31 +6,35 @@
 #include <utility/widget/bottomcontrolwidget.h>
 #include <utility/widget/headcontrolwidget.h>
 #include <utility/widget/topcontrolwidget.h>
+#include "utility/widget/weeducoursewidgetbase.h"
 
 namespace Ui {
 class WeListeningWidget;
 }
 
-class WeListeningWidget : public QWidget
+class WeListeningWidget : public WeeduCourseWidgetBase
 {
     Q_OBJECT
 
 public:
     explicit WeListeningWidget(QWidget *parent = 0);
     ~WeListeningWidget();
-    void renderWithEventInfo(wetalkevents eventInfo);
 
+    void loadData(const wetalkevents _dataInfo, const int _currentOperateNum);
 private:
     void init();
 
 private slots:
     void on_showContentButton_clicked();
 
+    void slot_playNext();
 private:
-    Ui::WeListeningWidget *ui;
-    BottomControlWidget *m_bottomControlWidget;
-    HeadControlWidget  *m_headControlWidget;
-    TopControlWidget  *m_topControlWidget;
+    Ui::WeListeningWidget                   *ui;
+    BottomControlWidget                     *m_bottomControlWidget;
+    HeadControlWidget                       *m_headControlWidget;
+    TopControlWidget                        *m_topControlWidget;
+
+    int                                     m_currentOperateNum;
 };
 
 #endif // WELISTENINGWIDGET_H
