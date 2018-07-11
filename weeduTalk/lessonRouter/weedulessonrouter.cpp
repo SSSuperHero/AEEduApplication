@@ -18,7 +18,7 @@ void WeeduLessonRouter::showRouterWithClassInfoAndWidget(wetalkgetClassInfo _cla
     {
         selectUIWithDatasourceAndCurrentStep(_classInfo.events , 3);
     }
-    if (_classInfo.dataList.size() > 0)
+    else if (_classInfo.dataList.size() > 0)
     {
         selectUIWithDatasourceAndCurrentStep(_classInfo.dataList , 0);
     }
