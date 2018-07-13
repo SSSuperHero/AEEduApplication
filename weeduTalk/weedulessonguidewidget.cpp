@@ -8,12 +8,15 @@
 #include <lessonRouter/weedulessonrouter.h>
 
 WeEduLessonGuideWidget::WeEduLessonGuideWidget(QWidget *parent) :
-    QWidget(parent),
+    BaseWidget(parent),
     ui(new Ui::WeEduLessonGuideWidget)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint );
     setAttribute(Qt::WA_TranslucentBackground, true);
+
+    connect( WeeduLessonRouter::instance(), &WeeduLessonRouter::signal_currentCourseFinish,
+             this, &WeEduLessonGuideWidget::slot_courseFinish );
 
 }
 
@@ -45,6 +48,11 @@ void WeEduLessonGuideWidget::loadData( const wetalkgetPartInfo_t _partInfoList )
     if( _partInfoList.size() == 0 )
         return;
 
+    clearLayout( ui->verticalLayoutPartList );
+
+//
+    DownloadUtil::downloadImage(this, _partInfoList.at(0).picture_url, ui->lessonCover,
+                                "QLabel#lessonCover", false );
     foreach (  wetalkgetPartInfo _partInfo, _partInfoList )
     {
         ClickedLabel *_partItem = new ClickedLabel( _partInfo.name, this );
@@ -76,6 +84,7 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
         fromJson( jsonString, _classInfo );
 
         WeeduLessonRouter *router = WeeduLessonRouter::instance();
+        router->setCourseResourceFilePath( m_filePath );
         router->showRouterWithClassInfoAndWidget(_classInfo, this);
     }
     fp.close();
@@ -83,10 +92,15 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
 
 void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
 {
-    this->close();
+    this->hide();
 }
 
 void WeEduLessonGuideWidget::slot_clickPartItem( ClickedLabel *_partItem )
 {
     analysisPartJson( _partItem->getInfoId() );
+}
+
+void WeEduLessonGuideWidget::slot_courseFinish()
+{
+    this->show();
 }

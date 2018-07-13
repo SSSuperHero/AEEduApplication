@@ -37,17 +37,24 @@ public:
 private:
     void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
 
+public:
+    void setCourseResourceFilePath(const QString _filePath);
+    QString getCourseResourceFilePath();
 signals:
+    void signal_currentCourseFinish();
 
 public slots:
 
 private slots:
     void slot_nextOperate(const int _operateNum);
+    void slot_currentCourseFinish();
 private:
     wetalkevents_t              m_currentOperateData;
     CLASS_INFO_TYPE             m_currentDataType;
 
     WeeduCourseWidgetBase       *m_currentOperateWidget;
+
+    QString                     m_courseResourceFilePath;
 };
 
 #endif // WEEDULESSONROUTER_H

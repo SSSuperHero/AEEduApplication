@@ -17,7 +17,7 @@
    <string notr="true">QWidget#WeeduLoginWidget
 {
 background-color: #999999;
-border-radius:8px;
+border-radius:2px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -64,7 +64,7 @@ border-radius:8px;
          <string notr="true">QWidget#widgetTop
 {
 background-color: rgb(255, 255, 255);
-border-radius:8px;
+border-radius:0px;
 }</string>
         </property>
         <widget class="QPushButton" name="pushButtonClose">

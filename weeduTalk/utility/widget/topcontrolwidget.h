@@ -16,10 +16,17 @@ public:
     ~TopControlWidget();
 
 public:
+    void setShowText( const QString _text );
+
 signals:
     void signal_back();
     void signal_courseNum( const int num );
     void signal_playRepeatAndShowText();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButtonText_clicked();
 
 private:
     Ui::TopControlWidget *ui;

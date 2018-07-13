@@ -15,6 +15,8 @@ public:
 
 signals:
     void signal_currentOperateFinish( const int _nextOperateNum );
+    void signal_currentCourseFinish();
+
 public slots:
 };
 

@@ -16,6 +16,7 @@ public:
     explicit SelectItemWidget(QWidget *parent = 0);
 
     void bindData(const QString _titleStr, const wetalkDataListItem _data );
+    void bindData(const QString _titleStr, const wetalkselectEventItem _data );
 
     ~SelectItemWidget();
 
@@ -24,7 +25,8 @@ protected:
 private:
     Ui::SelectItemWidget            *ui;
 
-    wetalkDataListItem              m_dataInfo;
+    wetalkDataListItem              m_dataItemInfo;
+    wetalkselectEventItem           m_dataSelectItemInfo;
 };
 
 #endif // SELECTITEMWIDGET_H

@@ -12,6 +12,13 @@ namespace Ui {
 class WeeduComprehensionWidget;
 }
 
+enum DATA_ITEM_TYPE
+{
+    DATA_ITEM,
+    DATA_SELECT,
+    DATA_MULTIPLECHOICES
+};
+
 class WeeduComprehensionWidget : public WeeduCourseWidgetBase
 {
     Q_OBJECT
@@ -22,8 +29,17 @@ public:
 
     void init();
     void loadData(const wetalkevents _dataInfo, const int _currentOperateNum);
+
+private:
+    void showItems();
+    void showSelect();
+    void operaterMedia(const QString _mediaType, const QString _mediaFile);
+
 private slots:
     void slot_playNext();
+    void slot_playPrev();
+    void slot_palyPause();
+
 private:
     Ui::WeeduComprehensionWidget *ui;
 
@@ -33,6 +49,11 @@ private:
 
     wetalkevents                    m_operateDataInfo;
     int                             m_crrentOperateNum;
+    int                             m_itemNum;
+    int                             m_multipleChoicesNum;
+
+    DATA_ITEM_TYPE                  m_dataItemType;
+
 };
 
 #endif // WEEDUCOMPREHENSIONWIDGET_H

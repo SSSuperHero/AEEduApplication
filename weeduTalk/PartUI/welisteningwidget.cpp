@@ -1,10 +1,13 @@
 #include "welisteningwidget.h"
 #include "ui_welisteningwidget.h"
+#include "mgr/media/mediaplaymanager.h"
+#include "lessonRouter/weedulessonrouter.h"
 
 WeListeningWidget::WeListeningWidget(QWidget *parent) :
     WeeduCourseWidgetBase(parent),
     ui(new Ui::WeListeningWidget),
-    m_currentOperateNum(0)
+    m_currentOperateNum(0),
+    m_videoWidget(NULL)
 {
     ui->setupUi(this);
 //    ui->contentLabel->setHidden(true);
@@ -34,6 +37,12 @@ void WeListeningWidget::init()
 
 void WeListeningWidget::slot_playNext()
 {
+    if( m_videoWidget )
+    {
+        MediaPlayManager::instance()->mediaPlayStop();
+        m_videoWidget->setParent(NULL);
+    }
+
     emit signal_currentOperateFinish( m_currentOperateNum + 1 );
 }
 
@@ -44,18 +53,27 @@ void WeListeningWidget::loadData(const wetalkevents _dataInfo, const int _curren
 
     m_currentOperateNum = _currentOperateNum;
 
-    if (_dataInfo.media_type == "audio") {
+    if (_dataInfo.media_type == "audio")
+    {
 
-    } else if (_dataInfo.media_type == "video") {
+    }
+    else if (_dataInfo.media_type == "video")
+    {
+        QString _videoFile = WeeduLessonRouter::instance()->getCourseResourceFilePath() + "/" + _dataInfo.media_filename;
 
-    } else if (_dataInfo.media_type == "image") {
+        m_videoWidget =  MediaPlayManager::instance()->startPlayVideo( _videoFile, 3000, 9000 );
 
-    } else  if (_dataInfo.media_type == "mouth"){
+        ui->labelPic->hide();
+        ui->widgetChooseItem->hide();
+        ui->horizontalLayout->addWidget( m_videoWidget );
+    }
+    else if (_dataInfo.media_type == "image")
+    {
+
+    }
+    else if (_dataInfo.media_type == "mouth")
+    {
 
     }
 }
 
-void WeListeningWidget::on_showContentButton_clicked()
-{
-//    ui->contentLabel->setHidden(false);
-}

@@ -37,6 +37,8 @@ public:
     void skipPlayTime(const int _skipTime);
     void skipPlayPercentage( const int _skipTime );
 
+    QWidget *startPlayVideo(const QString _videoFile);
+    QWidget *startPlayVideo(const QString _videoFile, const int _startTime, const int _endTime);
 private:
 //    QMediaPlayer                *m_echoMediaPlayer;
     QtAV::VideoOutput           *m_videoOutput;
@@ -52,6 +54,10 @@ private:
 
     double                      m_currentVolume;
     MUESIC_PLAY_STATUS          currentPlayStatus;
+
+    int                         m_playStartTime;
+    int                         m_playEndTime;
+    bool                        m_skipFlag;
 
     qint64                      m_currentPlayDuration;
 };

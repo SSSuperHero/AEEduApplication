@@ -6,6 +6,7 @@
 #include "mgr/http/echowebhttpapi.h"
 #include "utility/jsonutil.h"
 #include "utility/widget/clicklabel.h"
+#include "utility/widget/basewidget.h"
 
 struct wetalkselectEventItem
 {
@@ -315,7 +316,7 @@ namespace Ui {
 class WeEduLessonGuideWidget;
 }
 
-class WeEduLessonGuideWidget : public QWidget
+class WeEduLessonGuideWidget : public BaseWidget
 {
     Q_OBJECT
 
@@ -334,6 +335,7 @@ protected:
 private slots:
     void slot_clickPartItem(ClickedLabel *_partItem );
 
+    void slot_courseFinish();
 private:
     Ui::WeEduLessonGuideWidget *ui;
 

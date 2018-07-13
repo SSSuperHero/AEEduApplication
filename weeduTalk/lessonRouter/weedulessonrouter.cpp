@@ -6,14 +6,15 @@
 WeeduLessonRouter::WeeduLessonRouter(QObject *parent) :
     QObject(parent),
     m_currentDataType( CLASS_INFO_ENVENS ),
-    m_currentOperateWidget(NULL)
+    m_currentOperateWidget(NULL),
+    m_courseResourceFilePath("")
 {
 }
 
 void WeeduLessonRouter::showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo, QWidget *_widget)
 {
 
-    qDebug()<<_classInfo.media_filename;
+    qDebug()<<_classInfo.media_type;
 
     if (_classInfo.events.size() > 0)
     {
@@ -84,15 +85,47 @@ void WeeduLessonRouter::selectUIWithDatasourceAndCurrentStep(wetalkevents_t data
     {
         connect( m_currentOperateWidget, &WeeduCourseWidgetBase::signal_currentOperateFinish,
                  this, &WeeduLessonRouter::slot_nextOperate );
+        connect( m_currentOperateWidget, &WeeduCourseWidgetBase::signal_currentCourseFinish,
+                 this, &WeeduLessonRouter::slot_currentCourseFinish );
     }
 }
 
 void WeeduLessonRouter::slot_nextOperate( const int _operateNum )
 {
+    qDebug()<<" m_currentOperateData size:"<<m_currentOperateData.size();
+    qDebug()<<" m_currentOperateData _operateNum:"<<_operateNum;
+
     if( m_currentOperateData.size() <= _operateNum )
     {
+        slot_currentCourseFinish();
         return;
     }
 
     selectUIWithDatasourceAndCurrentStep( m_currentOperateData, _operateNum );
+}
+
+void WeeduLessonRouter::slot_currentCourseFinish()
+{
+    if( m_currentOperateWidget )
+    {
+        m_currentOperateWidget->close();
+        m_currentOperateWidget->deleteLater();
+        m_currentOperateWidget = NULL;
+    }
+
+    emit signal_currentCourseFinish();
+}
+
+void WeeduLessonRouter::setCourseResourceFilePath( const QString _filePath)
+{
+    m_courseResourceFilePath = _filePath;
+
+    qDebug()<<" setCourseResourceFilePath _filePath:"<<_filePath;
+}
+
+QString WeeduLessonRouter::getCourseResourceFilePath()
+{
+    qDebug()<<" getCourseResourceFilePath _filePath:"<<m_courseResourceFilePath;
+
+    return m_courseResourceFilePath;
 }

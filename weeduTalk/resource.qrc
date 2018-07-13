@@ -74,5 +74,6 @@
         <file>images/btn_Prev.png</file>
         <file>images/courseNum.png</file>
         <file>images/courseNumOn.png</file>
+        <file>images/btn_text.png</file>
     </qresource>
 </RCC>

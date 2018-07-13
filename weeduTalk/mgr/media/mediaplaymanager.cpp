@@ -8,7 +8,8 @@ MediaPlayManager::MediaPlayManager( QObject *parent ):
     m_currentPlayDuration(0),
     m_playOverFlag(false),
     m_currentVolume(50.0),
-    currentPlayStatus(MUESIC_PLAY_NONE)
+    currentPlayStatus(MUESIC_PLAY_NONE),
+    m_skipFlag(false)
 {
     init();
 }
@@ -16,6 +17,9 @@ MediaPlayManager::MediaPlayManager( QObject *parent ):
 void MediaPlayManager::init()
 {
     m_mediaPlayer = new AVPlayer(this);
+
+    m_mediaPlayer->setBufferMode( QtAV::BufferPackets );
+    m_mediaPlayer->setBufferValue( 10*1024*1024 );
 
     QStringList _decoderlist;
 //    _decoderlist.append("dxva");
@@ -47,6 +51,35 @@ MediaPlayManager::~MediaPlayManager()
     mediaPlayStop();
 }
 
+QWidget *MediaPlayManager::startPlayVideo( const QString _videoFile )
+{
+    qDebug()<<"startPlayVideo _videoFile:"<<_videoFile;
+
+    mediaPlayStop();
+
+    m_mediaPlayer->play( _videoFile );
+
+    return m_videoOutput->widget();
+}
+
+QWidget *MediaPlayManager::startPlayVideo( const QString _videoFile, const int _startTime, const int _endTime )
+{
+    qDebug()<<"startPlayVideo _videoFile:"<<_videoFile;
+
+//    m_mediaPlayer->setOptionsForAudioCodec(mpDecoderConfigPage->audioDecoderOptions());
+//    m_mediaPlayer->setOptionsForVideoCodec(mpDecoderConfigPage->videoDecoderOptions());
+
+    m_mediaPlayer->play( _videoFile );
+
+    m_playStartTime = _startTime;
+    m_playEndTime = _endTime;
+    m_skipFlag = true;
+
+//    skipPlayTime( m_playStartTime );
+
+    return m_videoOutput->widget();
+}
+
 void MediaPlayManager::slot_durationChanged(qint64 duration)
 {
     m_currentPlayDuration = duration;
@@ -56,16 +89,31 @@ void MediaPlayManager::slot_durationChanged(qint64 duration)
 
 void MediaPlayManager::slot_positionChanged(qint64 position)
 {
-//     qDebug()<<"slot_positionChanged position:"<<position
+//     qDebug()<<"slot_positionChanged position:"<<position<<m_playEndTime;
 
-     if( position >= (m_currentPlayDuration - 100) || m_currentPlayDuration < 0 )
-     {
-             emit signal_playOverThenNext();
-     }
+//     if( m_skipFlag && position > 3000 )
+//     {
+//        skipPlayTime( 6000 );
+//        m_skipFlag = false;
+//     }
+
+    if( position >= (m_currentPlayDuration - 100) || m_currentPlayDuration < 0
+/*         || ( m_skipFlag && position >= 6000 )*/ )
+    {
+        emit signal_playOverThenNext();
+        mediaPlayStop();
+//        skipPlayTime( 2000 );
+//        m_skipFlag = false;
+    }
 }
 
 void MediaPlayManager::slot_stateChanged(QtAV::AVPlayer::State state)
 {
+    if( state == QtAV::AVPlayer::PlayingState )
+    {
+
+    }
+
     setPlayStatus( MUESIC_PLAY_STATUS(state) );
 }
 
@@ -91,7 +139,7 @@ void MediaPlayManager::skipPlayTime( const int _skipTime )
     if( m_mediaPlayer->state() ==  QtAV::AVPlayer::StoppedState )
         return;
 
-//    m_mediaPlayer->setSeekType( AccurateSeek );
+    m_mediaPlayer->setSeekType(AccurateSeek);
     m_mediaPlayer->seek( (qint64)_skipTime );
     qDebug()<<"MediaPlayManager _skipTime:"<<_skipTime;
 }
@@ -134,6 +182,7 @@ void MediaPlayManager::mediaPlayStop()
         m_mediaPlayer->stop();
     }
 
+    m_skipFlag = false;
     m_play_flag = false;
     qDebug()<<"mediaPlayStop...";
 }

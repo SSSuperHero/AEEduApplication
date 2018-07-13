@@ -25,7 +25,6 @@ private:
     void init();
 
 private slots:
-    void on_showContentButton_clicked();
 
     void slot_playNext();
 private:
@@ -35,6 +34,8 @@ private:
     TopControlWidget                        *m_topControlWidget;
 
     int                                     m_currentOperateNum;
+
+    QWidget                                 *m_videoWidget;
 };
 
 #endif // WELISTENINGWIDGET_H

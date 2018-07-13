@@ -92,14 +92,3 @@ EntityNetworkReplyHolder *EchoWebHttpApi::getWetalkPartList( QObject* replyOwner
                                         HttpMgr::instance()->get(postUrl, params, true, 5000));
 }
 
-EntityNetworkReplyHolder *EchoWebHttpApi::postIsLike( QObject* replyOwner, const QString &_soundId,
-                                                const int &_type )
-{
-    QString postUrl = getUrl( QString(WEB_ADDRESS_SOUND_LIKE_OR_UNLIKE) );
-
-    QString param = "sound_id=" + _soundId + "&type=" + QString::number(_type);
-
-    return new EntityNetworkReplyHolder(replyOwner,
-                                        HttpMgr::instance()->post(postUrl, param, true, 5000));
-}
-

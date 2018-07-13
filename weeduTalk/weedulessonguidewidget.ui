@@ -78,6 +78,12 @@ background-color: rgba(255, 255, 255, 0);
             <height>220</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel#lessonCover
+{
+border-image: url(:/images/middle_bg.png);
+}</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -95,6 +101,9 @@ background-color: rgba(255, 255, 255, 0);
            <number>20</number>
           </property>
           <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
            <number>20</number>
           </property>
          </layout>

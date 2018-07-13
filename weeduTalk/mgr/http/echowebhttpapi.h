@@ -25,8 +25,6 @@ public:
     static EntityNetworkReplyHolder* login(QObject* replyOwner, const QString& name,
                                            const QString& password);
 
-    static EntityNetworkReplyHolder *postIsLike(QObject *replyOwner, const QString &_soundId, const int &_type);
-
     static EntityNetworkReplyHolder *getWetalkUnitList( QObject *replyOwner, const int _course_id,  const int _level_id  );
     static EntityNetworkReplyHolder *getWetalkUnitItem( QObject* replyOwner, const int unit_id );
     static EntityNetworkReplyHolder *getWetalkPartList( QObject* replyOwner, const int lesson_id );

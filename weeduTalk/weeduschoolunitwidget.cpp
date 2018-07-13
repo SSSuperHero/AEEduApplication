@@ -125,16 +125,17 @@ qDebug()<<"upSchoolUnitWidget 2:";
     int _rowNum = getCurrentRowNum( _unitType );
     updateBackgroundPic( _unitType );
 
+qDebug()<<"upSchoolUnitWidget 3:";
     if( ui->unitItemLayout->count() > 0 )
         clearLayout( ui->unitItemLayout );
-
+qDebug()<<"upSchoolUnitWidget 4:";
     if( m_layoutWidgetbase )
     {
         delete m_layoutWidgetbase;
         m_layoutWidgetbase = NULL;
     }
     m_layoutWidgetbase = new QWidget( this );
-
+qDebug()<<"upSchoolUnitWidget 5:";
     for( int i = 0; i < _wetalkgetUnitInfoList.size(); i++ )
     {
         WeeduSchoolUnitItemBase *infoItem = WeeduSchoolUnitItemBase::newSchoolUnitItem( m_layoutWidgetbase, _unitType );
@@ -150,6 +151,7 @@ qDebug()<<"upSchoolUnitWidget 2:";
 
         ui->unitItemLayout->addWidget( infoItem, i/_rowNum, i%_rowNum );
     }
+qDebug()<<"upSchoolUnitWidget 6:";
 }
 
 void WeeduSchoolUnitWidget::upSchoolLessonWidget(const wetalkgetLessonInfo_t &_wetalkgetLessonInfoList,
