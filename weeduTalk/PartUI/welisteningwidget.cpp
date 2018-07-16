@@ -2,6 +2,7 @@
 #include "ui_welisteningwidget.h"
 #include "mgr/media/mediaplaymanager.h"
 #include "lessonRouter/weedulessonrouter.h"
+#include "utility/stringutility.h"
 
 WeListeningWidget::WeListeningWidget(QWidget *parent) :
     WeeduCourseWidgetBase(parent),
@@ -39,7 +40,7 @@ void WeListeningWidget::slot_playNext()
 {
     if( m_videoWidget )
     {
-        MediaPlayManager::instance()->mediaPlayStop();
+        MediaPlayManager::instance()->mediaPause();
         m_videoWidget->setParent(NULL);
     }
 
@@ -61,11 +62,16 @@ void WeListeningWidget::loadData(const wetalkevents _dataInfo, const int _curren
     {
         QString _videoFile = WeeduLessonRouter::instance()->getCourseResourceFilePath() + "/" + _dataInfo.media_filename;
 
-        m_videoWidget =  MediaPlayManager::instance()->startPlayVideo( _videoFile, 3000, 9000 );
+        int _startTime = 0;
+        int _endTime = 0;
+        StringUtility::stringToTime( _dataInfo.timeRange, _startTime, _endTime );
+        qDebug()<<"WeListeningWidget timeRange:"<<_dataInfo.timeRange <<_startTime <<_endTime;
+        m_videoWidget =  MediaPlayManager::instance()->startPlayMidea( _videoFile, _startTime, _endTime  );
 
         ui->labelPic->hide();
         ui->widgetChooseItem->hide();
         ui->horizontalLayout->addWidget( m_videoWidget );
+
     }
     else if (_dataInfo.media_type == "image")
     {

@@ -20,6 +20,9 @@ public:
 
     ~SelectItemWidget();
 
+signals:
+    void signal_selectFinish();
+
 protected:
     void mousePressEvent(QMouseEvent *event);
 private:

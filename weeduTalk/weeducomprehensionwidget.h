@@ -3,9 +3,6 @@
 
 #include <QWidget>
 #include "utility/widget/weeducoursewidgetbase.h"
-#include "utility/widget/bottomcontrolwidget.h"
-#include "utility/widget/headcontrolwidget.h"
-#include "utility/widget/topcontrolwidget.h"
 #include "weedulessonguidewidget.h"
 
 namespace Ui {
@@ -33,19 +30,16 @@ public:
 private:
     void showItems();
     void showSelect();
-    void operaterMedia(const QString _mediaType, const QString _mediaFile);
+    void operaterMedia(wetalkMultipleChoices _multipleChoicesData);
 
 private slots:
     void slot_playNext();
     void slot_playPrev();
     void slot_palyPause();
 
+    void slot_chooseFinish();
 private:
     Ui::WeeduComprehensionWidget *ui;
-
-    BottomControlWidget             *m_bottomControlWidget;
-    HeadControlWidget               *m_headControlWidget;
-    TopControlWidget                *m_topControlWidget;
 
     wetalkevents                    m_operateDataInfo;
     int                             m_crrentOperateNum;

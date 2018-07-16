@@ -6,6 +6,13 @@
 #include "config/define.h"
 #include "mybasesingleton.h"
 
+enum PLAY_SEEK_TYPE
+{
+    PLAY_SEEK_NONE,
+    PLAY_SEEK_START,
+    PLAY_SEEK_END
+};
+
 class MediaPlayManager : public QObject
 {
     Q_OBJECT
@@ -26,38 +33,26 @@ public slots:
     void slot_stateChanged(QtAV::AVPlayer::State state);
 
 public:
-    void mediaPlayStart(const QString &_url);
     void mediaPlayOrPause();
     void mediaPlayStop();
     void setVolume( const int &_volume );
     int getVolume();
 
-    void setPlayStatus( const MUESIC_PLAY_STATUS _playStatus );
-public:
     void skipPlayTime(const int _skipTime);
     void skipPlayPercentage( const int _skipTime );
 
-    QWidget *startPlayVideo(const QString _videoFile);
-    QWidget *startPlayVideo(const QString _videoFile, const int _startTime, const int _endTime);
+    QWidget *startPlayMidea(const QString _videoFile);
+    QWidget *startPlayMidea(const QString _videoFile, const int _startTime, const int _endTime);
+    void mediaPause();
 private:
 //    QMediaPlayer                *m_echoMediaPlayer;
     QtAV::VideoOutput           *m_videoOutput;
     QtAV::AVPlayer              *m_mediaPlayer;
-
     QString                     m_currentPlayURL;
-//    QTimer*                     m_updatePalyTimer;
-    bool                        m_playOverFlag;
-    bool                        m_pause_flag;
-    bool                        m_play_flag;
-    qreal                       m_progress;
-    QString                     m_playTimeText;
-
     double                      m_currentVolume;
-    MUESIC_PLAY_STATUS          currentPlayStatus;
-
     int                         m_playStartTime;
     int                         m_playEndTime;
-    bool                        m_skipFlag;
+    PLAY_SEEK_TYPE              m_seekType;
 
     qint64                      m_currentPlayDuration;
 };

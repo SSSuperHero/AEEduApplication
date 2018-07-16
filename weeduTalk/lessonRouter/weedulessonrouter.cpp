@@ -9,6 +9,7 @@ WeeduLessonRouter::WeeduLessonRouter(QObject *parent) :
     m_currentOperateWidget(NULL),
     m_courseResourceFilePath("")
 {
+    m_weeduCourseMainWidget = new WeeduCourseMainWidget();
 }
 
 void WeeduLessonRouter::showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo, QWidget *_widget)
@@ -48,12 +49,14 @@ void WeeduLessonRouter::selectUIWithDatasourceAndCurrentStep(wetalkevents_t data
     } else if (eventInfo.type == "passage_comprehension") {
         m_currentOperateWidget =  new WeeduComprehensionWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
-        m_currentOperateWidget->show();
+        m_weeduCourseMainWidget->addWidget( m_currentOperateWidget );
+        m_weeduCourseMainWidget->show();
 
     } else if (eventInfo.type.contains("multipleChoices",Qt::CaseSensitive)) {
         m_currentOperateWidget =  new WeeduComprehensionWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
-        m_currentOperateWidget->show();
+        m_weeduCourseMainWidget->addWidget( m_currentOperateWidget );
+        m_weeduCourseMainWidget->show();
 
     } else if (eventInfo.type == "dialog_listening") {
 
@@ -112,6 +115,8 @@ void WeeduLessonRouter::slot_currentCourseFinish()
         m_currentOperateWidget->deleteLater();
         m_currentOperateWidget = NULL;
     }
+
+    m_weeduCourseMainWidget->hide();
 
     emit signal_currentCourseFinish();
 }

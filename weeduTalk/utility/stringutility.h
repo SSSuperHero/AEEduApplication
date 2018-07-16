@@ -19,6 +19,7 @@ public:
     static QString getHostIpAddress();
     static QString getHostMacAddress();
     static QString geteElidedText(QFont font, QString str, int MaxWidth);
+    static bool stringToTime(QString _timeStr, int &startTime, int &endTime);
 };
 
 #endif // STRINGUTILITY_H

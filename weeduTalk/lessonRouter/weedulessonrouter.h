@@ -5,6 +5,7 @@
 #include <weedulessonguidewidget.h>
 #include "mybasesingleton.h"
 #include "utility/widget/weeducoursewidgetbase.h"
+#include "weeducoursemainwidget.h"
 
 enum OPERATE_TYPE
 {
@@ -53,6 +54,7 @@ private:
     CLASS_INFO_TYPE             m_currentDataType;
 
     WeeduCourseWidgetBase       *m_currentOperateWidget;
+    WeeduCourseMainWidget       *m_weeduCourseMainWidget;
 
     QString                     m_courseResourceFilePath;
 };

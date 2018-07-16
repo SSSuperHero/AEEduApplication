@@ -10,6 +10,33 @@ StringUtility::StringUtility()
 
 }
 
+bool StringUtility::stringToTime( QString _timeStr, int &startTime, int &endTime )
+{
+    qInfo() << "stringToTime _timeStr: "<< _timeStr;
+
+    QStringList partsCurrent = _timeStr.split("-");
+
+    if( partsCurrent.size() != 2 )
+        return false;
+
+    QStringList _stratStrList = partsCurrent[0].split(":");
+    if( _stratStrList.size() != 3 )
+    {
+        return false;
+    }
+    startTime = _stratStrList[0].toInt()*60*1000 + _stratStrList[1].toInt()*1000 + _stratStrList[2].toInt();
+
+    QStringList _endStrList = partsCurrent[1].split(":");
+    if( _endStrList.size() != 3 )
+    {
+        return false;
+    }
+    endTime = _endStrList[0].toInt()*60*1000 + _endStrList[1].toInt()*1000 + _endStrList[2].toInt();
+
+    qInfo() << "stringToTime _timeStr: "<<startTime <<endTime;
+    return true;
+}
+
 QString StringUtility::geteElidedText(QFont font, QString str, int MaxWidth)
 {
     QFontMetrics fontWidth(font);

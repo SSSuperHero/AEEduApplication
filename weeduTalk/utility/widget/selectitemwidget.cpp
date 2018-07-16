@@ -39,6 +39,8 @@ void SelectItemWidget::mousePressEvent(QMouseEvent *event)
         this->setStyleSheet("background-color: #FA2323;\
                             color: #ffffff;");
     }
+
+    emit signal_selectFinish();
 }
 
 SelectItemWidget::~SelectItemWidget()

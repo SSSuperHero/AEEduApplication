@@ -131,9 +131,11 @@ struct wetalkMultipleChoices
 BEGIN_FROM_JSON(wetalkMultipleChoices)
 MEMBER_FROM_JSON(num)
 MEMBER_FROM_JSON(type)
-MEMBER_FROM_JSON(text)
+MEMBER_FROM_JSON(content_id)
 MEMBER_FROM_JSON(media_filename)
 MEMBER_FROM_JSON(media_type)
+MEMBER_FROM_JSON(timeRange)
+MEMBER_FROM_JSON(scores)
 MEMBER_FROM_JSON(picture)
 MEMBER_FROM_JSON(text)
 MEMBER_FROM_JSON(items)
@@ -331,6 +333,10 @@ protected:
     void paintEvent(QPaintEvent *event);
     void analysisPartJson(const int _partId);
     void mouseReleaseEvent(QMouseEvent *event);
+
+public:
+signals:
+    void signal_currentCourseFinish( bool _flag);
 
 private slots:
     void slot_clickPartItem(ClickedLabel *_partItem );

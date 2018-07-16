@@ -101,7 +101,8 @@ SOURCES += \
     utility/widget/headcontrolwidget.cpp \
     utility/widget/topcontrolwidget.cpp \
     PartUI/welisteningwidget.cpp \
-    utility/widget/weeducoursewidgetbase.cpp
+    utility/widget/weeducoursewidgetbase.cpp \
+    weeducoursemainwidget.cpp
 
 HEADERS += \
     weeduloginwidget.h \
@@ -163,7 +164,8 @@ HEADERS += \
     utility/widget/headcontrolwidget.h \
     utility/widget/topcontrolwidget.h \
     PartUI/welisteningwidget.h \
-    utility/widget/weeducoursewidgetbase.h
+    utility/widget/weeducoursewidgetbase.h \
+    weeducoursemainwidget.h
 
 FORMS += \
     weeduloginwidget.ui \
@@ -184,7 +186,8 @@ FORMS += \
     utility/widget/bottomcontrolwidget.ui \
     utility/widget/headcontrolwidget.ui \
     utility/widget/topcontrolwidget.ui \
-    PartUI/welisteningwidget.ui
+    PartUI/welisteningwidget.ui \
+    weeducoursemainwidget.ui
 
 RESOURCES += \
     resource.qrc

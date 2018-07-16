@@ -6,10 +6,8 @@ MediaPlayManager::MediaPlayManager( QObject *parent ):
     QObject(parent),
     m_mediaPlayer(NULL),
     m_currentPlayDuration(0),
-    m_playOverFlag(false),
     m_currentVolume(50.0),
-    currentPlayStatus(MUESIC_PLAY_NONE),
-    m_skipFlag(false)
+    m_seekType(PLAY_SEEK_NONE)
 {
     init();
 }
@@ -51,29 +49,32 @@ MediaPlayManager::~MediaPlayManager()
     mediaPlayStop();
 }
 
-QWidget *MediaPlayManager::startPlayVideo( const QString _videoFile )
+QWidget *MediaPlayManager::startPlayMidea( const QString _videoFile )
 {
     qDebug()<<"startPlayVideo _videoFile:"<<_videoFile;
-
-    mediaPlayStop();
 
     m_mediaPlayer->play( _videoFile );
 
     return m_videoOutput->widget();
 }
 
-QWidget *MediaPlayManager::startPlayVideo( const QString _videoFile, const int _startTime, const int _endTime )
+QWidget *MediaPlayManager::startPlayMidea( const QString _videoFile, const int _startTime, const int _endTime )
 {
-    qDebug()<<"startPlayVideo _videoFile:"<<_videoFile;
+    qDebug()<<"startPlayVideo _videoFile:"<<_videoFile <<_startTime <<_endTime;
 
-//    m_mediaPlayer->setOptionsForAudioCodec(mpDecoderConfigPage->audioDecoderOptions());
-//    m_mediaPlayer->setOptionsForVideoCodec(mpDecoderConfigPage->videoDecoderOptions());
+    if( m_currentPlayURL == _videoFile )
+    {
+        mediaPlayOrPause();
+    }
+    else
+    {
+         m_mediaPlayer->play( _videoFile );
+    }
 
-    m_mediaPlayer->play( _videoFile );
-
+    m_currentPlayURL = _videoFile;
     m_playStartTime = _startTime;
     m_playEndTime = _endTime;
-    m_skipFlag = true;
+    m_seekType = PLAY_SEEK_START;
 
 //    skipPlayTime( m_playStartTime );
 
@@ -89,32 +90,30 @@ void MediaPlayManager::slot_durationChanged(qint64 duration)
 
 void MediaPlayManager::slot_positionChanged(qint64 position)
 {
-//     qDebug()<<"slot_positionChanged position:"<<position<<m_playEndTime;
+     qDebug()<<"slot_positionChanged position:"<<position<<m_playStartTime<<m_playEndTime<<m_seekType;
 
-//     if( m_skipFlag && position > 3000 )
-//     {
-//        skipPlayTime( 6000 );
-//        m_skipFlag = false;
-//     }
+     if( m_seekType == PLAY_SEEK_START && m_currentPlayDuration > m_playStartTime )
+     {
+        m_seekType = PLAY_SEEK_END;
+
+        if( m_playStartTime > 0 )
+            skipPlayTime( m_playStartTime );
+     }
 
     if( position >= (m_currentPlayDuration - 100) || m_currentPlayDuration < 0
-/*         || ( m_skipFlag && position >= 6000 )*/ )
+         || ( m_seekType == PLAY_SEEK_END && position >= m_playEndTime ) )
     {
+        m_seekType = PLAY_SEEK_NONE;
+
         emit signal_playOverThenNext();
-        mediaPlayStop();
-//        skipPlayTime( 2000 );
-//        m_skipFlag = false;
+        mediaPause();
+        qDebug()<<"slot_positionChanged position:"<<position<<m_playStartTime<<m_playEndTime;
     }
 }
 
 void MediaPlayManager::slot_stateChanged(QtAV::AVPlayer::State state)
 {
-    if( state == QtAV::AVPlayer::PlayingState )
-    {
 
-    }
-
-    setPlayStatus( MUESIC_PLAY_STATUS(state) );
 }
 
 //参数 总时间百分比
@@ -136,7 +135,7 @@ void MediaPlayManager::skipPlayTime( const int _skipTime )
     if( m_mediaPlayer == NULL )
         return;
 
-    if( m_mediaPlayer->state() ==  QtAV::AVPlayer::StoppedState )
+    if( !m_mediaPlayer->isPlaying() )
         return;
 
     m_mediaPlayer->setSeekType(AccurateSeek);
@@ -144,22 +143,12 @@ void MediaPlayManager::skipPlayTime( const int _skipTime )
     qDebug()<<"MediaPlayManager _skipTime:"<<_skipTime;
 }
 
-void MediaPlayManager::setPlayStatus(const MUESIC_PLAY_STATUS _playStatus)
+void MediaPlayManager::mediaPause()
 {
-    currentPlayStatus = _playStatus;
-}
-
-void MediaPlayManager::mediaPlayStart(const QString &_url)
-{
-    qDebug()<<"mediaPlayStart url:"<<_url;
-
-    if( _url.isEmpty() )
-        return;
-
-    mediaPlayStop();
-    m_currentPlayURL = _url;
-
-    m_mediaPlayer->play(_url);
+    if ( m_mediaPlayer->isPlaying() && !m_mediaPlayer->isPaused() )
+    {
+        m_mediaPlayer->pause( !m_mediaPlayer->isPaused() );
+    }
 }
 
 void MediaPlayManager::mediaPlayOrPause()
@@ -182,8 +171,7 @@ void MediaPlayManager::mediaPlayStop()
         m_mediaPlayer->stop();
     }
 
-    m_skipFlag = false;
-    m_play_flag = false;
+    m_seekType = PLAY_SEEK_NONE;
     qDebug()<<"mediaPlayStop...";
 }
 

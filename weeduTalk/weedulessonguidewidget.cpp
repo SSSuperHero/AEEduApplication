@@ -98,9 +98,12 @@ void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
 void WeEduLessonGuideWidget::slot_clickPartItem( ClickedLabel *_partItem )
 {
     analysisPartJson( _partItem->getInfoId() );
+
+    emit signal_currentCourseFinish( false );
 }
 
 void WeEduLessonGuideWidget::slot_courseFinish()
 {
-    this->show();
+//    this->show();
+    emit signal_currentCourseFinish( true );
 }

@@ -25,7 +25,10 @@ WeeduSchoolUnitWidget::WeeduSchoolUnitWidget(QWidget *parent) :
 
     connect( ui->widgetChoose, &windgetLabel::signal_clickWidgetItem,
              this, &WeeduSchoolUnitWidget::slot_showChooseLevelItemWidget );
+
     m_lessonGuideWidget = new WeEduLessonGuideWidget();
+    connect( m_lessonGuideWidget, &WeEduLessonGuideWidget::signal_currentCourseFinish,
+             this, &WeeduSchoolUnitWidget::slot_currentCourseFinish );
     m_lessonGuideWidget->hide();
 
     ui->label_head->setPixmap( QPixmap( userInfoMgr::instance()->getUserInfo().avatar_url ) );
@@ -119,7 +122,7 @@ void WeeduSchoolUnitWidget::upSchoolUnitWidget( const wetalkgetUnitInfo_t &_weta
     m_weeduSchoolItemType = WEEDUSCHOOL_ITEM_UNIT;
     m_weeduChooseUnitInfoList = _wetalkgetUnitInfoList;
 qDebug()<<"upSchoolUnitWidget 1:";
-    ui->label_name->setText( _wetalkgetUnitInfoList.at(0).name );
+//    ui->label_name->setText( _wetalkgetUnitInfoList.at(0).name );
 qDebug()<<"upSchoolUnitWidget 2:";
 
     int _rowNum = getCurrentRowNum( _unitType );
@@ -274,6 +277,20 @@ void WeeduSchoolUnitWidget::slot_clickSchoolLessonItem( const wetalkgetLessonInf
     m_classInfoFilepath = filePath;
 
     upLoadWetalkPart( _lessonInfo.id );
+}
+
+void WeeduSchoolUnitWidget::slot_currentCourseFinish(bool _flag)
+{
+    if( _flag )
+    {
+        this->show();
+        m_lessonGuideWidget->show();
+    }
+    else
+    {
+        this->hide();
+        m_lessonGuideWidget->hide();
+    }
 }
 
 void WeeduSchoolUnitWidget::upLoadWetalkPart( const int _Part_id )

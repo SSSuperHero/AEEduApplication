@@ -55,6 +55,8 @@ private slots:
     void slot_clickSchoolLessonItem(const wetalkgetLessonInfo _lessonInfo, const LESSON_WEEDUSCHOOL_TYPE _type,
                                     const QString filePath);
 
+    void slot_currentCourseFinish( bool _flag);
+
 private:
     Ui::WeeduSchoolUnitWidget *ui;
 
