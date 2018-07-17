@@ -26,16 +26,11 @@ private:
 
 private slots:
 
-    void slot_playNext();
 private:
     Ui::WeListeningWidget                   *ui;
     BottomControlWidget                     *m_bottomControlWidget;
     HeadControlWidget                       *m_headControlWidget;
     TopControlWidget                        *m_topControlWidget;
-
-    int                                     m_currentOperateNum;
-
-    QWidget                                 *m_videoWidget;
 };
 
 #endif // WELISTENINGWIDGET_H

@@ -33,16 +33,12 @@ private:
     void operaterMedia(wetalkMultipleChoices _multipleChoicesData);
 
 private slots:
-    void slot_playNext();
-    void slot_playPrev();
-    void slot_palyPause();
-
     void slot_chooseFinish();
+
 private:
-    Ui::WeeduComprehensionWidget *ui;
+    Ui::WeeduComprehensionWidget    *ui;
 
     wetalkevents                    m_operateDataInfo;
-    int                             m_crrentOperateNum;
     int                             m_itemNum;
     int                             m_multipleChoicesNum;
 

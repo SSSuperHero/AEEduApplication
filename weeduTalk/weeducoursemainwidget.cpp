@@ -1,5 +1,6 @@
 #include "weeducoursemainwidget.h"
 #include "ui_weeducoursemainwidget.h"
+#include "utility/widget/weeducoursewidgetbase.h"
 #include <QDebug>
 #include <QTimer>
 
@@ -36,37 +37,46 @@ void WeeduCourseMainWidget::init()
 
 void WeeduCourseMainWidget::addWidget( QWidget *_courseShowWidget )
 {
-//    if( ui->horizontalLayout->count() > 0 )
-//        clearLayout( ui->horizontalLayout );
+    if( ui->horizontalLayout->count() > 0 )
+        clearLayout( ui->horizontalLayout );
+    if( !_courseShowWidget )
+        return;
+
+    connect( m_bottomControlWidget, &BottomControlWidget::signal_playNext,
+             (WeeduCourseWidgetBase*)_courseShowWidget, &WeeduCourseWidgetBase::slot_playNext );
+    connect( m_bottomControlWidget, &BottomControlWidget::signal_playPrev,
+             (WeeduCourseWidgetBase*)_courseShowWidget, &WeeduCourseWidgetBase::slot_playPrev );
 
     ui->horizontalLayout->addWidget( _courseShowWidget );
 }
 
 void WeeduCourseMainWidget::slot_chooseFinish()
 {
-    QTimer::singleShot( 2*1000, this, &WeeduCourseMainWidget::slot_playNext );
+
 }
 
 void WeeduCourseMainWidget::slot_playNext()
 {
 
-    emit signal_currentOperateFinish( m_crrentOperateNum + 1 );
+    emit signal_playNext();
+//    emit signal_currentOperateFinish( m_crrentOperateNum + 1 );
 
     qDebug()<<" WeeduCourseMainWidget m_crrentOperateNum:"<<m_crrentOperateNum;
 }
 
 void WeeduCourseMainWidget::slot_playPrev()
 {
+    emit signal_playPrev();
 
-    m_crrentOperateNum -= 1;
-    if( m_crrentOperateNum < 0 )
-    {
-        emit signal_currentCourseFinish();
-    }
-    else
-    {
-        emit signal_currentOperateFinish( m_crrentOperateNum );
-    }
+//    m_crrentOperateNum -= 1;
+//    if( m_crrentOperateNum < 0 )
+//    {
+//        emit signal_currentCourseFinish();
+//    }
+//    else
+//    {
+//        emit signal_currentOperateFinish( m_crrentOperateNum );
+//    }
 
 
     qDebug()<<" WeeduCourseMainWidget m_crrentOperateNum:"<<m_crrentOperateNum;

@@ -10,7 +10,6 @@
 WeeduComprehensionWidget::WeeduComprehensionWidget(QWidget *parent) :
     WeeduCourseWidgetBase(parent),
     ui(new Ui::WeeduComprehensionWidget),
-    m_crrentOperateNum(0),
     m_itemNum(0),
     m_multipleChoicesNum(0)
 {
@@ -98,7 +97,7 @@ void WeeduComprehensionWidget::showSelect()
 void WeeduComprehensionWidget::loadData( const wetalkevents _dataInfo, const int _currentOperateNum )
 {
     m_operateDataInfo = _dataInfo;
-    m_crrentOperateNum = _currentOperateNum;
+    m_currentOperateNum = _currentOperateNum;
 
     if( m_operateDataInfo.multipleChoicesList.size() < 1 )
         return;
@@ -107,7 +106,7 @@ void WeeduComprehensionWidget::loadData( const wetalkevents _dataInfo, const int
 
 //    m_topControlWidget->setShowText( m_operateDataInfo.multipleChoicesList.at(m_multipleChoicesNum).text.text );
 
-//    qDebug()<<"WeeduComprehensionWidget initDataInfo size:"<< m_operateDataInfo.multipleChoicesList.at(0).items.size()<<m_operateDataInfo.num;
+    qDebug()<<"WeeduComprehensionWidget initDataInfo size:"<< m_operateDataInfo.multipleChoicesList.at(0).items.size()<<m_operateDataInfo.num;
     if( m_operateDataInfo.multipleChoicesList.at(m_multipleChoicesNum).items.size() > 0 )
     {
         showItems();
@@ -116,42 +115,13 @@ void WeeduComprehensionWidget::loadData( const wetalkevents _dataInfo, const int
     {
         showSelect();
     }
+
+    qDebug()<<"WeeduComprehensionWidget initDataInfo size:"<< m_operateDataInfo.multipleChoicesList.at(0).items.size()<<m_operateDataInfo.num;
 }
 
 void WeeduComprehensionWidget::slot_chooseFinish()
 {
     QTimer::singleShot( 2*1000, this, &WeeduComprehensionWidget::slot_playNext );
-}
-
-void WeeduComprehensionWidget::slot_playNext()
-{
-
-    emit signal_currentOperateFinish( m_crrentOperateNum + 1 );
-
-    qDebug()<<" WeeduComprehensionWidget size:"<<m_operateDataInfo.multipleChoicesList.size();
-}
-
-void WeeduComprehensionWidget::slot_playPrev()
-{
-
-    m_crrentOperateNum -= 1;
-    if( m_crrentOperateNum < 0 )
-    {
-        emit signal_currentCourseFinish();
-    }
-    else
-    {
-        emit signal_currentOperateFinish( m_crrentOperateNum - 1 );
-        MediaPlayManager::instance()->mediaPause();
-    }
-
-    qDebug()<<"m_crrentOperateNum:"<<m_crrentOperateNum;
-    qDebug()<<" WeeduComprehensionWidget size:"<<m_operateDataInfo.multipleChoicesList.size();
-}
-
-void WeeduComprehensionWidget::slot_palyPause()
-{
-
 }
 
 WeeduComprehensionWidget::~WeeduComprehensionWidget()

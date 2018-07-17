@@ -34,29 +34,25 @@ void WeeduLessonRouter::selectUIWithDatasourceAndCurrentStep(wetalkevents_t data
     if( datasource.size() <= currentStep )
         return;
 
-    if( m_currentOperateWidget )
-    {
-        m_currentOperateWidget->deleteLater();
-        m_currentOperateWidget = NULL;
-    }
+//    if( m_currentOperateWidget )
+//    {
+//        m_currentOperateWidget->deleteLater();
+//        m_currentOperateWidget = NULL;
+//    }
 
     wetalkevents eventInfo = datasource.at(currentStep);
     if (eventInfo.type == "passage_listening") {
         m_currentOperateWidget =  new WeListeningWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
-        m_currentOperateWidget->show();
+//        m_currentOperateWidget->show();
 
     } else if (eventInfo.type == "passage_comprehension") {
         m_currentOperateWidget =  new WeeduComprehensionWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
-        m_weeduCourseMainWidget->addWidget( m_currentOperateWidget );
-        m_weeduCourseMainWidget->show();
 
     } else if (eventInfo.type.contains("multipleChoices",Qt::CaseSensitive)) {
         m_currentOperateWidget =  new WeeduComprehensionWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
-        m_weeduCourseMainWidget->addWidget( m_currentOperateWidget );
-        m_weeduCourseMainWidget->show();
 
     } else if (eventInfo.type == "dialog_listening") {
 
@@ -86,6 +82,11 @@ void WeeduLessonRouter::selectUIWithDatasourceAndCurrentStep(wetalkevents_t data
 
     if( m_currentOperateWidget )
     {
+        m_weeduCourseMainWidget->addWidget( m_currentOperateWidget );
+
+        if( !m_weeduCourseMainWidget->isVisible() )
+            m_weeduCourseMainWidget->show();
+
         connect( m_currentOperateWidget, &WeeduCourseWidgetBase::signal_currentOperateFinish,
                  this, &WeeduLessonRouter::slot_nextOperate );
         connect( m_currentOperateWidget, &WeeduCourseWidgetBase::signal_currentCourseFinish,

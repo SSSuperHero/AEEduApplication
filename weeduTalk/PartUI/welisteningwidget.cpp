@@ -6,45 +6,23 @@
 
 WeListeningWidget::WeListeningWidget(QWidget *parent) :
     WeeduCourseWidgetBase(parent),
-    ui(new Ui::WeListeningWidget),
-    m_currentOperateNum(0),
-    m_videoWidget(NULL)
+    ui(new Ui::WeListeningWidget)
 {
     ui->setupUi(this);
 //    ui->contentLabel->setHidden(true);
 
-    init();
+//    init();
 }
 
 WeListeningWidget::~WeListeningWidget()
 {
+
     delete ui;
 }
 
 void WeListeningWidget::init()
 {
-    m_bottomControlWidget = new BottomControlWidget( this );
-    ui->horizontalLayout_bottom->addWidget( m_bottomControlWidget );
-    connect( m_bottomControlWidget, &BottomControlWidget::signal_playNext,
-             this, &WeListeningWidget::slot_playNext );
 
-    m_headControlWidget = new HeadControlWidget( this );
-     ui->verticalLayout_head->addWidget( m_headControlWidget );
-
-    m_topControlWidget = new TopControlWidget( this );
-    ui->verticalLayout_head->addWidget( m_topControlWidget );
-
-}
-
-void WeListeningWidget::slot_playNext()
-{
-    if( m_videoWidget )
-    {
-        MediaPlayManager::instance()->mediaPause();
-        m_videoWidget->setParent(NULL);
-    }
-
-    emit signal_currentOperateFinish( m_currentOperateNum + 1 );
 }
 
 void WeListeningWidget::loadData(const wetalkevents _dataInfo, const int _currentOperateNum)

@@ -21,6 +21,10 @@ public:
 
     void addWidget(QWidget *_courseShowWidget);
 signals:
+    void signal_palyPause();
+    void signal_playPrev();
+    void signal_playNext();
+
     void signal_currentOperateFinish( const int _nextOperateNum );
     void signal_currentCourseFinish();
 
