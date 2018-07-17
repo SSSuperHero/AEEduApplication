@@ -13,17 +13,8 @@ public:
 
     virtual void loadData( const wetalkevents _dataInfo, const int _currentOperateNum );
 
-private:
+public:
     void stopPlayMedia();
-
-public slots:
-    void slot_playNext();
-    void slot_playPrev();
-    void slot_palyPause();
-
-signals:
-    void signal_currentOperateFinish( const int _nextOperateNum );
-    void signal_currentCourseFinish();
 
 public slots:
 

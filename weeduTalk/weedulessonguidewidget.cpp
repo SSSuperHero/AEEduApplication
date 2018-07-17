@@ -85,7 +85,7 @@ void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
 
         WeeduLessonRouter *router = WeeduLessonRouter::instance();
         router->setCourseResourceFilePath( m_filePath );
-        router->showRouterWithClassInfoAndWidget(_classInfo, this);
+        router->showRouterWithClassInfoAndWidget( _classInfo );
     }
     fp.close();
 }

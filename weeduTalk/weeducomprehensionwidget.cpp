@@ -121,7 +121,7 @@ void WeeduComprehensionWidget::loadData( const wetalkevents _dataInfo, const int
 
 void WeeduComprehensionWidget::slot_chooseFinish()
 {
-    QTimer::singleShot( 2*1000, this, &WeeduComprehensionWidget::slot_playNext );
+//    QTimer::singleShot( 2*1000, this, &WeeduComprehensionWidget::slot_playNext );
 }
 
 WeeduComprehensionWidget::~WeeduComprehensionWidget()

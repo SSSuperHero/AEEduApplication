@@ -31,12 +31,7 @@ class WeeduLessonRouter : public QObject
 public:
     explicit WeeduLessonRouter(QObject *parent = nullptr);
 
-    void showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo, QWidget *_widget);
-
-//    void playAudio(const QString _file);
-
-private:
-    void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
+    void showRouterWithClassInfoAndWidget(wetalkgetClassInfo _classInfo );
 
 public:
     void setCourseResourceFilePath(const QString _filePath);
@@ -47,13 +42,12 @@ signals:
 public slots:
 
 private slots:
-    void slot_nextOperate(const int _operateNum);
     void slot_currentCourseFinish();
+
 private:
     wetalkevents_t              m_currentOperateData;
     CLASS_INFO_TYPE             m_currentDataType;
 
-    WeeduCourseWidgetBase       *m_currentOperateWidget;
     WeeduCourseMainWidget       *m_weeduCourseMainWidget;
 
     QString                     m_courseResourceFilePath;

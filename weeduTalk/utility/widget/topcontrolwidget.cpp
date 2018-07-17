@@ -17,7 +17,19 @@ TopControlWidget::~TopControlWidget()
 
 void TopControlWidget::setShowText(const QString _text)
 {
+
+    if( _text.isEmpty() )
+    {
+        ui->pushButtonText->hide();
+    }
+    else
+    {
+        ui->pushButtonText->show();
+    }
+
+    ui->label_text->hide();
     ui->label_text->setText( _text );
+
 }
 
 void TopControlWidget::on_pushButton_clicked()
@@ -27,6 +39,7 @@ void TopControlWidget::on_pushButton_clicked()
 
 void TopControlWidget::on_pushButtonText_clicked()
 {
+
     if( ui->label_text->isVisible() )
     {
         ui->label_text->hide();

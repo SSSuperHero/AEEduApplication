@@ -6,6 +6,7 @@
 #include "utility/widget/headcontrolwidget.h"
 #include "utility/widget/topcontrolwidget.h"
 #include "utility/widget/basemainwidget.h"
+#include "utility/widget/weeducoursewidgetbase.h"
 
 namespace Ui {
 class WeeduCourseMainWidget;
@@ -20,16 +21,13 @@ public:
     ~WeeduCourseMainWidget();
 
     void addWidget(QWidget *_courseShowWidget);
+    void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
 signals:
-    void signal_palyPause();
-    void signal_playPrev();
-    void signal_playNext();
-
-    void signal_currentOperateFinish( const int _nextOperateNum );
     void signal_currentCourseFinish();
 
 private:
     void init();
+    void nextOperate(const int _operateNum);
 
 private slots:
     void slot_playNext();
@@ -38,14 +36,18 @@ private slots:
 
     void slot_chooseFinish();
 
+    void slot_currentCourseFinish();
 private:
     Ui::WeeduCourseMainWidget *ui;
+
+    WeeduCourseWidgetBase           *m_currentOperateWidget;
 
     BottomControlWidget             *m_bottomControlWidget;
     HeadControlWidget               *m_headControlWidget;
     TopControlWidget                *m_topControlWidget;
 
-    int                             m_crrentOperateNum;
+    int                             m_currentOperateNum;
+    wetalkevents_t                  m_currentOperateData;
 
 };
 
