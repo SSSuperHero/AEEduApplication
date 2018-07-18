@@ -331,7 +331,6 @@ public:
     void setPartFilePath(const QString _filePath);
 protected:
     void paintEvent(QPaintEvent *event);
-    void analysisPartJson(const int _partId);
     void mouseReleaseEvent(QMouseEvent *event);
 
 public:

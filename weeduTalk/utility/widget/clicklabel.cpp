@@ -46,13 +46,25 @@ void ClickedLabel::mouseReleaseEvent(QMouseEvent *e)
     QWidget::mouseReleaseEvent(e);
 }
 
-void ClickedLabel::setInfoId( const int _infoId )
+void ClickedLabel::setDataInfo( const int _infoId, const int _totleIndex, const int _curIndex )
 {
     m_infoId = _infoId;
+    m_totleIndex = _totleIndex;
+    m_curIndex = _curIndex;
 }
 
 int ClickedLabel::getInfoId()
 {
     return m_infoId;
+}
+
+int ClickedLabel::getTotleIndex()
+{
+    return m_totleIndex;
+}
+
+int ClickedLabel::getCurrentIndex()
+{
+    return m_curIndex;
 }
 

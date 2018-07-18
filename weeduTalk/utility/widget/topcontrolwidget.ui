@@ -60,10 +60,16 @@ border-image: url(:/images/middle_btn_back.png);</string>
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="widgetChoose" native="true">
-       <layout class="QHBoxLayout" name="horizontalLayout">
+      <widget class="QWidget" name="widgetChooseLesson" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>0</height>
+        </size>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_chooseLesson" stretch="0">
         <property name="spacing">
-         <number>2</number>
+         <number>5</number>
         </property>
         <property name="leftMargin">
          <number>0</number>
@@ -99,28 +105,27 @@ border-image: url(:/images/middle_btn_back.png);</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="minimumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-image: url(:/images/courseNum.png);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="widgetChoose" native="true">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
        </layout>
       </widget>
      </item>

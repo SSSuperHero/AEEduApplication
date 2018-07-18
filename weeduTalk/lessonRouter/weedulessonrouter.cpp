@@ -51,3 +51,26 @@ QString WeeduLessonRouter::getCourseResourceFilePath()
 
     return m_courseResourceFilePath;
 }
+
+void WeeduLessonRouter::analysisPartJson( const int _partId, const int _totleIndex, const int _curIndex  )
+{
+    QString _jsonFile = m_courseResourceFilePath + "/" + QString("json%1.txt").arg(_partId);
+
+    qDebug()<<"analysisPartJson:"<<_jsonFile;
+    QFile fp( _jsonFile );
+    if(fp.open(QIODevice::ReadOnly))
+    {
+        QByteArray bt = fp.readAll();
+
+        QString jsonString = bt;
+
+        wetalkgetClassInfo _classInfo;
+        fromJson( jsonString, _classInfo );
+
+        m_weeduCourseMainWidget->setChooseLesson( _totleIndex, _curIndex );
+
+        showRouterWithClassInfoAndWidget( _classInfo );
+    }
+    fp.close();
+}
+

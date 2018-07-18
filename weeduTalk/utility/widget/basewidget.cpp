@@ -174,6 +174,9 @@ void BaseWidget::widgetShowCenter()
 
 void BaseWidget::clearLayout(QLayout *layout)
 {
+    if( layout->count() )
+        return;
+
     QLayoutItem *item;
     while((item = layout->takeAt(0)) != 0)
     {

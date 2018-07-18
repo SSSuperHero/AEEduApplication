@@ -22,6 +22,8 @@ public:
 
     void addWidget(QWidget *_courseShowWidget);
     void selectUIWithDatasourceAndCurrentStep(wetalkevents_t datasource, int currentStep);
+
+    void setChooseLesson( const int _lessonNum, const int _curIndex );
 signals:
     void signal_currentCourseFinish();
 

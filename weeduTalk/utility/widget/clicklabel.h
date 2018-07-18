@@ -11,8 +11,10 @@ public:
     ClickedLabel(QString str,QWidget *parent=0);
     ClickedLabel(QWidget *parent=0);
 
-    void setInfoId(const int _infoId);
+    void setDataInfo(const int _infoId, const int _totleIndex, const int _curIndex );
     int getInfoId();
+    int getTotleIndex();
+    int getCurrentIndex();
 signals:
     void Clicked(ClickedLabel* clicked);
 protected:
@@ -22,6 +24,8 @@ private:
 
 private:
     int     m_infoId;
+    int     m_totleIndex;
+    int     m_curIndex;
 };
 
 #endif // CLICKLABEL_H

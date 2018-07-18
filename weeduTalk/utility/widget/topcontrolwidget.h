@@ -2,12 +2,13 @@
 #define TOPCONTROLWIDGET_H
 
 #include <QWidget>
+#include "utility/widget/basewidget.h"
 
 namespace Ui {
 class TopControlWidget;
 }
 
-class TopControlWidget : public QWidget
+class TopControlWidget : public BaseWidget
 {
     Q_OBJECT
 
@@ -17,6 +18,7 @@ public:
 
 public:
     void setShowText( const QString _text );
+    void setChooseLesson( const int _lessonNum, const int _curIndex );
 
 signals:
     void signal_back();

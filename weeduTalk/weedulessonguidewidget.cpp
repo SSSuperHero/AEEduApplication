@@ -41,6 +41,8 @@ void WeEduLessonGuideWidget::paintEvent(QPaintEvent *event)
 void WeEduLessonGuideWidget::setPartFilePath( const QString _filePath )
 {
     m_filePath = _filePath;
+
+    WeeduLessonRouter::instance()->setCourseResourceFilePath( m_filePath );
 }
 
 void WeEduLessonGuideWidget::loadData( const wetalkgetPartInfo_t _partInfoList )
@@ -50,44 +52,23 @@ void WeEduLessonGuideWidget::loadData( const wetalkgetPartInfo_t _partInfoList )
 
     clearLayout( ui->verticalLayoutPartList );
 
-//
     DownloadUtil::downloadImage(this, _partInfoList.at(0).picture_url, ui->lessonCover,
                                 "QLabel#lessonCover", false );
-    foreach (  wetalkgetPartInfo _partInfo, _partInfoList )
-    {
-        ClickedLabel *_partItem = new ClickedLabel( _partInfo.name, this );
-        _partItem->setInfoId( _partInfo.id );
 
-        _partItem->setStyleSheet( " QLabel{color:#000000; border-radius:2px;} \
+    for( int i = 0; i < _partInfoList.size(); i++ )
+//    foreach (  wetalkgetPartInfo _partInfo, _partInfoList )
+    {
+        wetalkgetPartInfo _partInfo = _partInfoList[i];
+        ClickedLabel *_partItem = new ClickedLabel( _partInfo.name, this );
+        _partItem->setDataInfo( _partInfo.id, _partInfoList.size(), i );
+
+        _partItem->setStyleSheet( "QLabel{color:#000000; border-radius:2px;} \
         QLabel:hover{color:#666666;}");
 
         ui->verticalLayoutPartList->addWidget( _partItem );
 
         connect( _partItem, &ClickedLabel::Clicked, this, &WeEduLessonGuideWidget::slot_clickPartItem );
     }
-
-}
-
-void WeEduLessonGuideWidget::analysisPartJson( const int _partId )
-{
-    QString _jsonFile = m_filePath + "/" + QString("json%1.txt").arg(_partId);
-
-    qDebug()<<"analysisPartJson:"<<_jsonFile;
-    QFile fp( _jsonFile );
-    if(fp.open(QIODevice::ReadOnly))
-    {
-        QByteArray bt = fp.readAll();
-
-        QString jsonString = bt;
-
-        wetalkgetClassInfo _classInfo;
-        fromJson( jsonString, _classInfo );
-
-        WeeduLessonRouter *router = WeeduLessonRouter::instance();
-        router->setCourseResourceFilePath( m_filePath );
-        router->showRouterWithClassInfoAndWidget( _classInfo );
-    }
-    fp.close();
 }
 
 void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
@@ -97,7 +78,9 @@ void WeEduLessonGuideWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void WeEduLessonGuideWidget::slot_clickPartItem( ClickedLabel *_partItem )
 {
-    analysisPartJson( _partItem->getInfoId() );
+    WeeduLessonRouter::instance()->analysisPartJson( _partItem->getInfoId(),
+                                                     _partItem->getTotleIndex(),
+                                                     _partItem->getCurrentIndex() );
 
     emit signal_currentCourseFinish( false );
 }

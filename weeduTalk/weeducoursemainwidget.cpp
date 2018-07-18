@@ -44,11 +44,12 @@ void WeeduCourseMainWidget::selectUIWithDatasourceAndCurrentStep(wetalkevents_t 
     if( datasource.size() <= currentStep )
         return;
 
-    this->show();
-
     m_currentOperateData = datasource;
-
     wetalkevents eventInfo = datasource.at(currentStep);
+
+    this->show();
+    m_topControlWidget->setShowText( eventInfo.text );
+
     if (eventInfo.type == "passage_listening") {
         m_currentOperateWidget =  new WeListeningWidget;
         m_currentOperateWidget->loadData(eventInfo,currentStep);
@@ -93,6 +94,11 @@ void WeeduCourseMainWidget::selectUIWithDatasourceAndCurrentStep(wetalkevents_t 
         this->addWidget( m_currentOperateWidget );
     }
 
+}
+
+void WeeduCourseMainWidget::setChooseLesson(const int _lessonNum, const int _curIndex)
+{
+    m_topControlWidget->setChooseLesson( _lessonNum, _curIndex );
 }
 
 void WeeduCourseMainWidget::nextOperate( const int _operateNum )

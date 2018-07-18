@@ -36,6 +36,7 @@ public:
 public:
     void setCourseResourceFilePath(const QString _filePath);
     QString getCourseResourceFilePath();
+    void analysisPartJson(const int _partId, const int _totleIndex, const int _curIndex);
 signals:
     void signal_currentCourseFinish();
 
